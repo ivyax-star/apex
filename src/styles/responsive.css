@@ -1,0 +1,562 @@
+@media (max-width: 980px) {
+  .hero-contact {
+    width: min(620px, 72vw);
+    font-size: 0.5rem;
+  }
+
+  .registration-card__title {
+    font-size: 1.22rem;
+    padding-inline: 26px;
+  }
+
+  .registration-form {
+    gap: 6px 10px;
+    padding-inline: 28px;
+  }
+
+  .registration-field span {
+    font-size: 0.5rem;
+  }
+
+  .registration-field input,
+  .registration-field select {
+    height: 18px;
+    font-size: 0.5rem;
+  }
+
+  .registration-consent {
+    font-size: 0.42rem;
+  }
+
+  .growth-panel {
+    width: min(760px, calc(100vw - 40px));
+  }
+
+  .platform-slider {
+    width: min(760px, calc(100vw - 40px));
+  }
+
+  .platform-card p {
+    inset-inline: 8%;
+    font-size: 0.48rem;
+  }
+
+  .summer-cards,
+  .match-panel,
+  .daily-growth-cards,
+  .faq-inner,
+  .landing-footer__inner {
+    width: min(760px, calc(100vw - 40px));
+  }
+
+  .summer-card__content {
+    inset-inline-start: 43%;
+  }
+
+  .match-card__label {
+    font-size: 0.48rem;
+  }
+
+  .day-schedule__item {
+    font-size: 0.66rem;
+  }
+
+  .section-heading--daily-growth h2 {
+    font-size: 1.48rem;
+  }
+
+  .faq-carousel {
+    width: min(790px, 100%);
+  }
+}
+
+@media (max-width: 720px) {
+  .hero-contact {
+    position: absolute;
+    inset-inline-start: 50%;
+    inset-block-end: 12px;
+    width: min(360px, 76vw);
+    min-height: auto;
+    flex-wrap: wrap;
+    gap: 8px 18px;
+    justify-content: center;
+    margin-inline: 0;
+    padding: 0;
+    background: transparent;
+    color: #3f3a21;
+    font-size: 0.44rem;
+    transform: translateX(-50%);
+  }
+
+  .hero-contact__item img {
+    width: 18px;
+    height: 18px;
+  }
+
+  .hero-contact__item {
+    justify-content: center;
+    white-space: normal;
+  }
+
+  .hero-contact__item--address {
+    text-align: center;
+  }
+
+  .registration-section {
+    padding-block: 20px 42px;
+    padding-inline: 16px;
+  }
+
+  .registration-card {
+    width: min(393px, 100%);
+    aspect-ratio: auto;
+    overflow: hidden;
+    border: 2px solid #0057bc;
+    border-radius: 28px;
+    background: #0057bc;
+    padding: 22px 18px 18px;
+  }
+
+  .registration-card__frame {
+    display: none;
+  }
+
+  .registration-card__title {
+    position: static;
+    width: 100%;
+    padding: 0 8px 18px;
+    font-size: 1.08rem;
+    line-height: 1.35;
+  }
+
+  .registration-form {
+    position: static;
+    width: 100%;
+    height: auto;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    border: 2px solid #0057bc;
+    border-radius: 24px;
+    background: #ffffff;
+    padding: 20px 18px 16px;
+  }
+
+  .registration-field span {
+    font-size: 0.7rem;
+  }
+
+  .registration-field input,
+  .registration-field select {
+    height: 30px;
+    font-size: 0.72rem;
+  }
+
+  .registration-consent {
+    font-size: 0.58rem;
+    line-height: 1.25;
+  }
+
+  .registration-consent input {
+    width: 12px;
+    height: 12px;
+  }
+
+  .registration-submit {
+    width: 170px;
+    margin-top: 0;
+  }
+
+  .growth-section {
+    padding-inline: 16px;
+    padding-bottom: 34px;
+  }
+
+  .growth-panel {
+    width: min(430px, 100%);
+    border-radius: 18px;
+    padding: 18px 16px 16px;
+  }
+
+  .section-heading h2 {
+    font-size: 1.22rem;
+    line-height: 1.12;
+  }
+
+  .section-heading p {
+    font-size: 0.68rem;
+    line-height: 1.35;
+  }
+
+  .growth-list {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    width: min(258px, 100%);
+    margin-inline: auto;
+    padding-inline: 0;
+  }
+
+  .platform-section {
+    padding-inline: 16px;
+    padding-bottom: 44px;
+  }
+
+  .section-heading--platform h2 {
+    font-size: 1.24rem;
+  }
+
+  .section-heading--platform .platform-title__secondary {
+    display: flex;
+  }
+
+  .platform-slider {
+    display: flex;
+    width: min(100%, 430px);
+    overflow-x: auto;
+    gap: 14px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    padding: 2px 4px 8px;
+  }
+
+  .platform-slider::-webkit-scrollbar {
+    display: none;
+  }
+
+  .platform-card {
+    flex: 0 0 168px;
+    scroll-snap-align: center;
+  }
+
+  .platform-card p {
+    font-size: 0.58rem;
+  }
+
+  .summer-section {
+    padding-inline: 16px;
+    padding-bottom: 34px;
+  }
+
+  .section-heading--summer h2 {
+    font-size: 1.28rem;
+  }
+
+  .section-heading--summer img {
+    position: static;
+    width: 58px;
+    justify-self: end;
+    margin-top: -18px;
+    transform: translateX(42px);
+  }
+
+  .summer-cards {
+    width: min(370px, 100%);
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .summer-card__content h3 {
+    font-size: 0.86rem;
+  }
+
+  .summer-card__content li {
+    font-size: 0.64rem;
+  }
+
+  .match-section {
+    padding: 28px 16px 44px;
+  }
+
+  .match-section::before {
+    height: 68px;
+  }
+
+  .match-panel {
+    width: min(430px, 100%);
+    border-radius: 18px;
+    padding: 26px 18px;
+  }
+
+  .section-heading--match h2 {
+    font-size: 1.25rem;
+  }
+
+  .section-heading--match::before {
+    width: 28px;
+    height: 34px;
+    margin-right: 4px;
+    transform: rotate(-11deg) translateY(7px);
+  }
+
+  .match-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .match-card__label {
+    min-height: 34px;
+    font-size: 0.62rem;
+  }
+
+  .match-submit {
+    width: 170px;
+    margin-top: 16px;
+  }
+
+  .day-section h2 {
+    font-size: 1.2rem;
+  }
+
+  .day-schedule {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    grid-auto-flow: row;
+    gap: 10px;
+  }
+
+  .day-schedule__item {
+    font-size: 0.72rem;
+  }
+
+  .day-schedule__time {
+    width: 108px;
+  }
+
+  .daily-growth-section {
+    padding: 28px 16px 40px;
+  }
+
+  .section-heading--daily-growth h2 {
+    padding-inline-end: 0;
+    font-size: 1.24rem;
+  }
+
+  .section-heading--daily-growth img {
+    position: static;
+    width: 58px;
+    justify-self: end;
+    margin-top: -12px;
+    margin-inline-end: 8%;
+    transform: none;
+  }
+
+  .daily-growth-cards {
+    width: min(277px, 100%);
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .faq-section {
+    padding: 30px 16px 32px;
+  }
+
+  .faq-inner {
+    width: min(430px, 100%);
+  }
+
+  .section-heading--faq h2 {
+    flex-wrap: wrap;
+    gap: 5px;
+    font-size: 1.18rem;
+  }
+
+  .section-heading--faq h2::after {
+    width: 42px;
+    height: 34px;
+    font-size: 1.2rem;
+  }
+
+  .faq-item summary {
+    min-height: 36px;
+    font-size: 0.72rem;
+    padding-block: 9px;
+  }
+
+  .faq-item p {
+    font-size: 0.66rem;
+    padding-right: 22px;
+  }
+
+  .faq-carousel {
+    width: min(430px, 100%);
+  }
+
+  .faq-carousel__stage {
+    height: 170px;
+  }
+
+  .faq-carousel__slide {
+    width: min(255px, 76vw);
+  }
+
+  .faq-carousel__slide--far-prev,
+  .faq-carousel__slide--far-next {
+    display: none;
+  }
+
+  .faq-carousel__slide--prev {
+    inset-block-start: 45%;
+    left: 13%;
+    opacity: 0.58;
+  }
+
+  .faq-carousel__slide--current {
+    inset-block-start: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  .faq-carousel__slide--next {
+    inset-block-start: 45%;
+    left: 87%;
+    opacity: 0.58;
+  }
+
+  .faq-carousel__slide--prev::after,
+  .faq-carousel__slide--next::after {
+    background: rgba(0, 78, 170, 0.52);
+  }
+
+  .faq-carousel__dots {
+    gap: 16px;
+  }
+
+  .faq-submit {
+    width: min(310px, 100%);
+    margin-top: 18px;
+  }
+
+  .landing-footer {
+    padding: 20px 16px 22px;
+    background-size: cover;
+  }
+
+  .landing-footer__inner {
+    width: min(430px, 100%);
+    grid-template-columns: 1fr;
+    gap: 12px;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .landing-footer__contacts {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    justify-items: center;
+  }
+
+  .landing-footer__contact,
+  .landing-footer__contact--address {
+    grid-row: auto;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 420px) {
+  .hero-contact {
+    align-items: center;
+    justify-content: center;
+    inset-block-end: 8px;
+    width: min(330px, 82vw);
+    gap: 4px 10px;
+    font-size: 0.34rem;
+  }
+
+  .hero-contact__item {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .registration-card {
+    border-radius: 24px;
+    padding-inline: 14px;
+  }
+
+  .registration-form {
+    padding-inline: 14px;
+  }
+
+  .growth-panel {
+    padding-inline: 12px;
+  }
+
+  .platform-card {
+    flex-basis: 158px;
+  }
+
+  .platform-card p {
+    font-size: 0.54rem;
+  }
+
+  .summer-card__content {
+    inset-block: 9% 7%;
+    inset-inline-start: 42%;
+    inset-inline-end: 5%;
+    gap: 3px;
+  }
+
+  .summer-card__content h3 {
+    font-size: 0.72rem;
+  }
+
+  .summer-card__content li {
+    font-size: 0.54rem;
+    padding-left: 9px;
+  }
+
+  .summer-card__content li::before {
+    width: 5px;
+    height: 5px;
+  }
+
+  .consult-button {
+    min-height: 18px;
+    font-size: 0.52rem;
+    padding-right: 23px;
+  }
+
+  .match-panel {
+    padding-inline: 13px;
+  }
+
+  .match-card-grid {
+    gap: 10px;
+  }
+
+  .match-card__label {
+    font-size: 0.54rem;
+  }
+
+  .day-schedule__item {
+    grid-template-columns: 1fr;
+    gap: 4px;
+    justify-items: start;
+  }
+
+  .section-heading--daily-growth h2 {
+    font-size: 1.08rem;
+  }
+
+  .section-heading--daily-growth img {
+    width: 50px;
+  }
+
+  .section-heading--faq h2 {
+    font-size: 1.02rem;
+  }
+
+  .faq-carousel__stage {
+    height: 160px;
+  }
+
+  .faq-carousel__slide {
+    width: min(246px, 78vw);
+  }
+
+  .landing-footer__brand span {
+    font-size: 1rem;
+  }
+
+  .landing-footer__contact {
+    font-size: 0.58rem;
+  }
+}
