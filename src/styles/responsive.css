@@ -1,3 +1,448 @@
+@media (min-width: 981px) {
+  .hero-contact {
+    display: none;
+  }
+
+  .registration-section {
+    padding: 0 20px 4.2vw;
+  }
+
+  .registration-card {
+    width: min(69.375vw, calc(100vw - 80px));
+  }
+
+  .registration-card__title {
+    font-size: 2.05vw;
+    padding: 2.2vw 1.45vw;
+  }
+
+  .registration-form {
+    gap: 0.54vw 0.95vw;
+    padding: 1.95vw 2.85vw 1vw 2.05vw;
+  }
+
+  .registration-field {
+    gap: 0.25vw;
+  }
+
+  .registration-field span {
+    font-size: 0.78vw;
+  }
+
+  .registration-course-group legend {
+    font-size: 0.78vw;
+  }
+
+  .registration-field input,
+  .registration-field select,
+  .registration-course-select {
+    height: 1.72vw;
+    border: 0;
+    background: #0057bc;
+    color: #ffffff;
+    font-size: 0.7vw;
+    padding: 0 0.8vw;
+  }
+
+  .registration-course-list {
+    gap: 0.38vw;
+    padding: 0.55vw 0.7vw;
+  }
+
+  .registration-course-option {
+    font-size: 0.56vw;
+    padding: 0.28vw 0.45vw;
+  }
+
+  .registration-consent {
+    gap: 0.45vw;
+    font-size: 0.58vw;
+  }
+
+  .registration-consent input {
+    width: 0.78vw;
+    height: 0.78vw;
+  }
+
+  .registration-error,
+  .registration-message {
+    font-size: 0.46vw;
+  }
+
+  .registration-submit-wrap {
+    position: absolute;
+    inset-inline-start: 50%;
+    inset-block-end: -1.8vw;
+    width: 19.35vw;
+    margin: 0;
+    transform: translateX(-50%);
+  }
+
+  .registration-submit {
+    width: 100%;
+  }
+
+  .registration-submit-tooltip {
+    width: 18vw;
+    font-size: 0.52vw;
+    padding: 0.45vw 0.65vw;
+  }
+
+  .growth-section {
+    padding: 0 20px 4.8vw;
+  }
+
+  .growth-panel {
+    width: min(65.625vw, calc(100vw - 80px));
+    border-radius: 1.4vw;
+    padding: 1.35vw 4vw 1.8vw;
+  }
+
+  .section-heading h2 {
+    font-size: 2.34vw;
+  }
+
+  .section-heading p {
+    max-width: 57vw;
+    margin-top: 0.65vw;
+    font-size: 0.94vw;
+  }
+
+  .growth-list {
+    gap: 3.3vw;
+    margin-top: 1.55vw;
+    padding-inline: 0.4vw;
+  }
+
+  .platform-section {
+    padding: 0 20px 6vw;
+  }
+
+  .section-heading--platform h2 {
+    font-size: 2.82vw;
+  }
+
+  .section-heading--platform .platform-title__secondary {
+    gap: 0.8vw;
+  }
+
+  .section-heading--platform img {
+    width: 4.25vw;
+  }
+
+  .platform-slider {
+    --platform-gap: 1.25vw;
+    --platform-track-width: min(76.5625vw, calc(100vw - 80px));
+    gap: var(--platform-gap);
+    margin-top: 2.25vw;
+  }
+
+  .platform-card p {
+    font-size: 0.88vw;
+  }
+
+  .platform-dots {
+    gap: 1.75vw;
+    margin-top: 1.75vw;
+  }
+
+  .platform-dots button {
+    width: 0.72vw;
+    height: 0.72vw;
+  }
+
+  .summer-section {
+    padding: 0 20px 3.8vw;
+  }
+
+  .section-heading--summer h2 {
+    font-size: 2.55vw;
+  }
+
+  .section-heading--summer img {
+    width: 7.65vw;
+    inset-inline-end: -8.4vw;
+    inset-block-start: 0.6vw;
+  }
+
+  .summer-cards {
+    width: min(59.375vw, calc(100vw - 80px));
+    gap: 1.2vw;
+    margin-top: 2.2vw;
+  }
+
+  .summer-card {
+    border-radius: 1vw;
+  }
+
+  .summer-card__content {
+    gap: 0.38vw;
+  }
+
+  .summer-card__content h3 {
+    font-size: 1.05vw;
+  }
+
+  .summer-card__content li {
+    font-size: 0.78vw;
+    padding-left: 0.95vw;
+  }
+
+  .summer-card__content li::before {
+    width: 0.45vw;
+    height: 0.45vw;
+  }
+
+  .consult-button {
+    min-height: 1.58vw;
+    border-width: 0.16vw;
+    font-size: 0.64vw;
+    padding: 0.16vw 2.05vw 0.16vw 0.85vw;
+  }
+
+  .consult-button::after {
+    inset-inline-end: 0.22vw;
+    width: 1.25vw;
+    height: 1.25vw;
+    font-size: 0.72vw;
+  }
+
+  .match-section {
+    padding: 1.55vw 20px 4.25vw;
+  }
+
+  .match-section::before {
+    height: 6.45vw;
+  }
+
+  .match-panel {
+    width: min(65.625vw, calc(100vw - 80px));
+    border-radius: 1.4vw;
+    padding: 2.05vw 1.65vw 3.2vw;
+  }
+
+  .section-heading--match h2,
+  .day-section h2 {
+    font-size: 2.45vw;
+  }
+
+  .section-heading--match::before {
+    width: 2.95vw;
+    height: 3.6vw;
+    transform: rotate(-11deg) translateY(-0.15vw);
+  }
+
+  .match-card-grid {
+    gap: 1.15vw;
+    margin-top: 1.65vw;
+  }
+
+  .match-card__talk {
+    width: min(100%, 14.1vw);
+    margin-bottom: -0.4vw;
+  }
+
+  .match-submit {
+    width: 22.75vw;
+    margin-top: 1.2vw;
+  }
+
+  .day-section {
+    margin-top: 2.2vw;
+  }
+
+  .day-section h2::before {
+    width: 1.7vw;
+    height: 1.7vw;
+    margin-right: 0.65vw;
+    border-width: 0.22vw;
+  }
+
+  .day-schedule {
+    gap: 1vw 5.2vw;
+    margin-top: 2.35vw;
+  }
+
+  .day-schedule__item {
+    gap: 0.78vw;
+    font-size: 0.86vw;
+  }
+
+  .day-schedule__time {
+    width: 10.15vw;
+  }
+
+  .daily-growth-section {
+    padding: 2.45vw 20px 4.55vw;
+  }
+
+  .section-heading--daily-growth h2 {
+    padding-inline-end: 6.4vw;
+    font-size: 2.55vw;
+  }
+
+  .section-heading--daily-growth img {
+    width: 6.8vw;
+  }
+
+  .daily-growth-cards {
+    width: min(69.375vw, calc(100vw - 80px));
+    gap: 2.2vw;
+    margin-top: 2.1vw;
+  }
+
+  .daily-growth-card__content {
+    gap: 0.55vw;
+  }
+
+  .daily-growth-card__content h3 {
+    font-size: 1.28vw;
+  }
+
+  .daily-growth-card__content p {
+    font-size: 0.84vw;
+  }
+
+  .faq-section {
+    padding: 3.7vw 20px 3vw;
+  }
+
+  .faq-inner {
+    width: min(65.625vw, calc(100vw - 80px));
+  }
+
+  .section-heading--faq h2 {
+    gap: 0.55vw;
+    font-size: 2.42vw;
+  }
+
+  .section-heading--faq h2::after {
+    width: 5vw;
+    height: 4.05vw;
+    border-width: 0.22vw;
+    border-radius: 0.7vw 0.7vw 0.7vw 0.15vw;
+    font-size: 2.35vw;
+  }
+
+  .faq-list {
+    width: min(59.5vw, 100%);
+    margin-top: 1.5vw;
+  }
+
+  .faq-item::after {
+    width: calc(100% - 3.5vw);
+    margin-inline-start: 3.5vw;
+  }
+
+  .faq-item summary {
+    min-height: 2.35vw;
+    gap: 0.9vw;
+    font-size: 0.9vw;
+    padding: 0.6vw 0 0.55vw;
+  }
+
+  .faq-item__bullet {
+    width: 1.25vw;
+  }
+
+  .faq-item__arrow {
+    width: 1.1vw;
+  }
+
+  .faq-item p {
+    font-size: 0.83vw;
+    padding: 0.2vw 2.5vw 0.9vw 3.5vw;
+  }
+
+  .faq-carousel {
+    width: min(58.5vw, calc(100vw - 80px));
+    margin: 2.4vw 0 0 50%;
+    transform: translateX(-50%);
+  }
+
+  .faq-carousel__stage {
+    gap: 1.25vw;
+  }
+
+  .faq-carousel__slide {
+    width: 100%;
+  }
+
+  .faq-carousel__dots {
+    gap: 1.7vw;
+    margin-top: 1.1vw;
+  }
+
+  .faq-carousel__dots button {
+    width: 0.86vw;
+    height: 0.86vw;
+  }
+
+  .faq-submit {
+    width: 27.27vw;
+    margin-top: 1.5vw;
+  }
+
+  .landing-footer {
+    --footer-bg-height: clamp(190px, 17.58vw, 225px);
+    --footer-content-top: clamp(124px, 11.35vw, 126px);
+    min-height: var(--footer-bg-height);
+    padding: var(--footer-content-top) 20px clamp(18px, 2.15vw, 28px);
+  }
+
+  .landing-footer__inner {
+    width: min(82.5vw, calc(100vw - 80px), 1060px);
+    grid-template-columns: clamp(190px, 15.4vw, 210px) minmax(0, 1fr);
+    gap: clamp(20px, 2.2vw, 32px);
+  }
+
+  .landing-footer__brand {
+    width: clamp(196px, 15.8vw, 205px);
+  }
+
+  .landing-footer__logo {
+    width: 117.14%;
+  }
+
+  .landing-footer__contacts {
+    grid-template-columns: minmax(0, 1fr) max-content;
+    gap: clamp(10px, 1.1vw, 15px) clamp(32px, 3vw, 44px);
+  }
+
+  .landing-footer__contact--address span {
+    max-width: 100%;
+  }
+
+  .landing-footer__contact {
+    gap: var(--footer-contact-gap);
+    font-size: clamp(0.72rem, 0.9vw, 0.92rem);
+  }
+
+  .landing-footer__contact--phone {
+    font-size: clamp(1rem, 1.35vw, 1.22rem);
+  }
+
+  .landing-footer__contact--phone img {
+    width: var(--footer-icon-size);
+    height: var(--footer-icon-size);
+  }
+
+  .landing-footer__contact img {
+    width: var(--footer-icon-size);
+    height: var(--footer-icon-size);
+  }
+
+  .landing-footer__socials {
+    gap: clamp(8px, 0.9vw, 14px);
+    padding-inline-start: calc(var(--footer-icon-size) + var(--footer-contact-gap));
+  }
+
+  .landing-footer__social {
+    width: var(--footer-social-size);
+    height: var(--footer-social-size);
+  }
+}
+
 @media (max-width: 980px) {
   .hero-contact {
     width: min(620px, 72vw);
@@ -18,8 +463,13 @@
     font-size: 0.5rem;
   }
 
+  .registration-course-group legend {
+    font-size: 0.5rem;
+  }
+
   .registration-field input,
-  .registration-field select {
+  .registration-field select,
+  .registration-course-select {
     height: 18px;
     font-size: 0.5rem;
   }
@@ -49,6 +499,37 @@
     width: min(760px, calc(100vw - 40px));
   }
 
+  .landing-footer {
+    --footer-content-top: 118px;
+    --footer-icon-size: 34px;
+    --footer-social-size: 26px;
+    --footer-contact-gap: 9px;
+    padding-bottom: 26px;
+  }
+
+  .landing-footer__inner {
+    grid-template-columns: 170px minmax(0, 1fr);
+    gap: 18px;
+  }
+
+  .landing-footer__brand {
+    width: 170px;
+    margin-inline-start: 0;
+  }
+
+  .landing-footer__contacts {
+    grid-template-columns: minmax(270px, 1fr) max-content;
+    gap: 9px 18px;
+  }
+
+  .landing-footer__contact {
+    font-size: 0.62rem;
+  }
+
+  .landing-footer__contact--phone {
+    font-size: 0.9rem;
+  }
+
   .summer-card__content {
     inset-inline-start: 43%;
   }
@@ -71,6 +552,10 @@
 }
 
 @media (max-width: 720px) {
+  .hero-section {
+    --footer-overlap: 58px;
+  }
+
   .hero-contact {
     position: absolute;
     inset-inline-start: 50%;
@@ -145,8 +630,13 @@
     font-size: 0.7rem;
   }
 
+  .registration-course-group legend {
+    font-size: 0.7rem;
+  }
+
   .registration-field input,
-  .registration-field select {
+  .registration-field select,
+  .registration-course-select {
     height: 30px;
     font-size: 0.72rem;
   }
@@ -161,9 +651,66 @@
     height: 12px;
   }
 
+  .registration-course-list {
+    grid-template-columns: 1fr;
+    gap: 7px;
+  }
+
+  .registration-course-option {
+    font-size: 0.66rem;
+    padding: 6px 8px;
+  }
+
+  .registration-error,
+  .registration-message {
+    font-size: 0.58rem;
+  }
+
+  .registration-submit-wrap {
+    margin-top: 4px;
+  }
+
   .registration-submit {
     width: 170px;
     margin-top: 0;
+  }
+
+  .registration-submit-tooltip {
+    position: static;
+    width: 100%;
+    margin-bottom: 8px;
+    transform: none;
+  }
+
+  .registration-popup {
+    padding: 18px;
+  }
+
+  .registration-popup__card {
+    width: min(320px, calc(100vw - 32px));
+    border-radius: 18px;
+    padding: 18px 16px 20px;
+    box-shadow: 6px 6px 0 rgba(0, 40, 116, 0.38);
+  }
+
+  .registration-popup__card h2 {
+    margin-bottom: 14px;
+    border-radius: 16px;
+    font-size: clamp(1.28rem, 7vw, 1.72rem);
+    padding: 9px 34px 11px 14px;
+  }
+
+  .registration-popup__card p {
+    font-size: clamp(0.9rem, 4.1vw, 1.05rem);
+    line-height: 1.12;
+  }
+
+  .registration-popup__close {
+    inset-block-start: 22px;
+    inset-inline-end: 22px;
+    width: 26px;
+    height: 26px;
+    font-size: 1.2rem;
   }
 
   .growth-section {
@@ -212,7 +759,9 @@
     display: flex;
     width: min(100%, 430px);
     overflow-x: auto;
-    gap: 14px;
+    --platform-gap: 14px;
+    --platform-card-width: 168px;
+    gap: var(--platform-gap);
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
     padding: 2px 4px 8px;
@@ -223,7 +772,7 @@
   }
 
   .platform-card {
-    flex: 0 0 168px;
+    flex: 0 0 var(--platform-card-width);
     scroll-snap-align: center;
   }
 
@@ -263,17 +812,17 @@
   }
 
   .match-section {
-    padding: 28px 16px 44px;
+    padding: 36px 16px 44px;
   }
 
   .match-section::before {
-    height: 68px;
+    height: 34px;
   }
 
   .match-panel {
     width: min(430px, 100%);
     border-radius: 18px;
-    padding: 26px 18px;
+    padding: 22px 18px 26px;
   }
 
   .section-heading--match h2 {
@@ -283,8 +832,7 @@
   .section-heading--match::before {
     width: 28px;
     height: 34px;
-    margin-right: 4px;
-    transform: rotate(-11deg) translateY(7px);
+    transform: rotate(-11deg) translateY(-1px);
   }
 
   .match-card-grid {
@@ -345,8 +893,26 @@
     gap: 14px;
   }
 
+  .daily-growth-card__content {
+    inset-inline: 8.5%;
+    inset-block-end: 6.4%;
+    min-height: 31%;
+    align-content: center;
+    gap: 5px;
+  }
+
+  .daily-growth-card__content h3 {
+    font-size: 0.9rem;
+    line-height: 1.08;
+  }
+
+  .daily-growth-card__content p {
+    font-size: 0.68rem;
+    line-height: 1.18;
+  }
+
   .faq-section {
-    padding: 30px 16px 32px;
+    padding: 30px 16px calc(10px + var(--footer-overlap));
   }
 
   .faq-inner {
@@ -381,39 +947,11 @@
   }
 
   .faq-carousel__stage {
-    height: 170px;
+    gap: 8px;
   }
 
   .faq-carousel__slide {
-    width: min(255px, 76vw);
-  }
-
-  .faq-carousel__slide--far-prev,
-  .faq-carousel__slide--far-next {
-    display: none;
-  }
-
-  .faq-carousel__slide--prev {
-    inset-block-start: 45%;
-    left: 13%;
-    opacity: 0.58;
-  }
-
-  .faq-carousel__slide--current {
-    inset-block-start: 45%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(1);
-  }
-
-  .faq-carousel__slide--next {
-    inset-block-start: 45%;
-    left: 87%;
-    opacity: 0.58;
-  }
-
-  .faq-carousel__slide--prev::after,
-  .faq-carousel__slide--next::after {
-    background: rgba(0, 78, 170, 0.52);
+    width: 100%;
   }
 
   .faq-carousel__dots {
@@ -426,28 +964,66 @@
   }
 
   .landing-footer {
-    padding: 20px 16px 22px;
-    background-size: cover;
+    --footer-bg-height: 192px;
+    --footer-content-top: clamp(102px, 26vw, 116px);
+    --footer-icon-size: 30px;
+    --footer-social-size: 26px;
+    --footer-contact-gap: 9px;
+    --landing-bg-size: 720px var(--footer-bg-height);
+    margin-top: calc(var(--footer-overlap) * -1);
+    min-height: var(--footer-bg-height);
+    padding: var(--footer-content-top) 18px 30px;
   }
 
   .landing-footer__inner {
-    width: min(430px, 100%);
+    width: min(360px, 100%);
     grid-template-columns: 1fr;
     gap: 12px;
     justify-items: center;
     text-align: center;
   }
 
+  .landing-footer__brand {
+    width: min(210px, 62vw);
+    margin-inline-start: 0;
+  }
+
   .landing-footer__contacts {
     grid-template-columns: 1fr;
-    gap: 8px;
-    justify-items: center;
+    grid-template-areas:
+      "address"
+      "phone"
+      "email"
+      "socials";
+    gap: 10px;
+    justify-items: stretch;
+    width: 100%;
+  }
+
+  .landing-footer__contact--address span {
+    max-width: none;
   }
 
   .landing-footer__contact,
   .landing-footer__contact--address {
     grid-row: auto;
-    justify-content: center;
+    width: 100%;
+    justify-content: flex-start;
+    gap: 9px;
+    font-size: 0.66rem;
+    line-height: 1.22;
+    text-align: left;
+  }
+
+  .landing-footer__contact--phone {
+    width: 100%;
+    justify-content: flex-start;
+    font-size: 1rem;
+  }
+
+  .landing-footer__socials {
+    justify-content: flex-start;
+    padding-inline-start: calc(var(--footer-icon-size) + var(--footer-contact-gap));
   }
 }
 
@@ -475,12 +1051,35 @@
     padding-inline: 14px;
   }
 
+  .registration-popup {
+    padding: 14px;
+  }
+
+  .registration-popup__card {
+    width: min(300px, calc(100vw - 26px));
+    padding: 16px 13px 18px;
+  }
+
+  .registration-popup__card h2 {
+    font-size: clamp(1.12rem, 7.4vw, 1.45rem);
+    padding-inline: 12px 30px;
+  }
+
+  .registration-popup__card p {
+    font-size: clamp(0.84rem, 4.4vw, 0.98rem);
+  }
+
+  .registration-popup__close {
+    inset-block-start: 19px;
+    inset-inline-end: 18px;
+  }
+
   .growth-panel {
     padding-inline: 12px;
   }
 
   .platform-card {
-    flex-basis: 158px;
+    --platform-card-width: 158px;
   }
 
   .platform-card p {
@@ -540,23 +1139,40 @@
     width: 50px;
   }
 
+  .daily-growth-card__content h3 {
+    font-size: 0.84rem;
+  }
+
+  .daily-growth-card__content p {
+    font-size: 0.62rem;
+    line-height: 1.16;
+  }
+
   .section-heading--faq h2 {
     font-size: 1.02rem;
   }
 
   .faq-carousel__stage {
-    height: 160px;
+    gap: 6px;
   }
 
   .faq-carousel__slide {
-    width: min(246px, 78vw);
+    width: 100%;
   }
 
-  .landing-footer__brand span {
-    font-size: 1rem;
+  .landing-footer__brand {
+    width: min(190px, 62vw);
+  }
+
+  .landing-footer__logo {
+    width: 117.14%;
   }
 
   .landing-footer__contact {
-    font-size: 0.58rem;
+    font-size: 0.6rem;
+  }
+
+  .landing-footer__contact--phone {
+    font-size: 0.92rem;
   }
 }

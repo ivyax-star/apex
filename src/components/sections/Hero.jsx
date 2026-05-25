@@ -1,10 +1,10 @@
-import { useState } from 'react'
-import bannerDesktop from '../../assets/Apex - Export/01 top banner opt 1.png'
-import bannerMobile from '../../assets/Apex - Export/01 top banner opt 1.png'
+import { useEffect, useState } from 'react'
+import RegisterForm from '../common/RegisterForm'
+import Footer from '../layout/Footer'
+import { scrollToSection } from '../../utils/scrollToSection'
+import bannerDesktop from '../../assets/Apex - Export/01 top banner opt 2.png'
+import bannerMobile from '../../assets/Apex - Export/01 top banner opt 2.png'
 import formFrame from '../../assets/Apex - Export/form 2.png'
-import phoneIcon from '../../assets/Apex - Export/Icon + Button/icon dt.png'
-import homeIcon from '../../assets/Apex - Export/Icon + Button/icon home.png'
-import emailIcon from '../../assets/Apex - Export/Icon + Button/icon email.png'
 import registerButton from '../../assets/Apex - Export/Icon + Button/btn dk ngay.png'
 import finalCtaButton from '../../assets/Apex - Export/Icon + Button/CTA end.png'
 import faqBulletIcon from '../../assets/Apex - Export/Icon + Button/bullet.png'
@@ -21,9 +21,6 @@ import platformImageFive from '../../assets/Apex - Export/Block 3/img 5.png'
 import summerCardOne from '../../assets/Apex - Export/Block 4/banner khoa hoc 1.png'
 import summerCardTwo from '../../assets/Apex - Export/Block 4/banner khoa hoc 2.png'
 import summerPlane from '../../assets/Apex - Export/Block 4/icon 4.png'
-import blueBackground from '../../assets/Apex - Export/BG_/BG xanh FAQ.png'
-import whiteBackground from '../../assets/Apex - Export/BG_/Bg white.png'
-import footerBackground from '../../assets/Apex - Export/BG_/10 Footer.png'
 import matchImageOne from '../../assets/Apex - Export/Block 5/h1.png'
 import matchImageTwo from '../../assets/Apex - Export/Block 5/h2.png'
 import matchImageThree from '../../assets/Apex - Export/Block 5/h3.png'
@@ -49,43 +46,101 @@ import faqImageTwo from '../../assets/Apex - Export/Block 9/2.png'
 import faqImageThree from '../../assets/Apex - Export/Block 9/3.png'
 import faqImageFour from '../../assets/Apex - Export/Block 9/5.png'
 
+const lazyImageProps = {
+  loading: 'lazy',
+  decoding: 'async',
+}
+
 const growthImages = [
   {
     src: growthImageOne,
-    alt: 'Lam quen tieng Anh, Toan, tu duy va ky nang hoc tap theo cach hoc chuan My',
+    alt: 'Làm quen tiếng Anh, Toán, tư duy và kỹ năng học tập theo cách học chuẩn Mỹ',
   },
   {
     src: growthImageTwo,
-    alt: 'Hoc va tuong tac bang tieng Anh trong moi truong lop hoc co dinh huong',
+    alt: 'Học và tương tác bằng tiếng Anh trong môi trường lớp học có định hướng',
   },
   {
     src: growthImageThree,
-    alt: 'Tham gia ky nang song, nghe thuat, the thao, nau an va hoat dong trai nghiem',
+    alt: 'Tham gia kỹ năng sống, nghệ thuật, thể thao, nấu ăn và hoạt động trải nghiệm',
   },
 ]
 
 const platformCards = [
   {
+    id: 'curriculum',
     src: platformImageOne,
     text: 'Học theo giáo trình K-12 chuẩn Mỹ từ Ivy Global School',
+    copy: (
+      <>
+        <span>Học theo giáo trình</span>
+        <span>K-12 chuẩn Mỹ từ</span>
+        <span>
+          <strong>Ivy Global School</strong>
+        </span>
+      </>
+    ),
   },
   {
+    id: 'thinking',
     src: platformImageTwo,
     text: 'Kết hợp toàn diện tư duy, kỹ năng sống, sự tự tin và khả năng thích nghi',
+    copy: (
+      <>
+        <span>
+          <strong>Kết hợp toàn diện</strong> tư duy,
+        </span>
+        <span>kỹ năng sống, sự tự tin và khả</span>
+        <span>năng thích nghi</span>
+      </>
+    ),
   },
   {
+    id: 'english-teachers',
     src: platformImageThree,
     text: 'Thẩm thấu tiếng Anh với 100% giáo viên nước ngoài',
+    copy: (
+      <>
+        <span>Thẩm thấu tiếng Anh</span>
+        <span>
+          với <strong>100% giáo viên</strong>
+        </span>
+        <span>
+          <strong>nước ngoài</strong>
+        </span>
+      </>
+    ),
   },
   {
+    id: 'english-interaction',
     src: platformImageFour,
     text: 'Học, hỏi, tương tác bằng 100% tiếng Anh',
+    copy: (
+      <>
+        <span>Học, hỏi, tương tác</span>
+        <span>
+          bằng <strong>100% tiếng Anh</strong>
+        </span>
+      </>
+    ),
   },
   {
+    id: 'class-size',
     src: platformImageFive,
     text: 'Sĩ số tối đa 20 bé/lớp tối ưu hóa thời gian tương tác với giáo viên',
+    copy: (
+      <>
+        <span>
+          Sĩ số tối đa <strong>20 bé/lớp</strong>
+        </span>
+        <span>tối ưu hóa thời gian</span>
+        <span>tương tác với giáo viên</span>
+      </>
+    ),
   },
 ]
+
+const platformSlideInterval = 3800
 
 const summerOptions = [
   {
@@ -199,20 +254,45 @@ const faqImages = [
   { src: faqImageFour, alt: 'Tre tham gia bai hoc tren bang tuong tac' },
 ]
 
-const faqCarouselSlots = [
-  { offset: -2, name: 'far-prev' },
-  { offset: -1, name: 'prev' },
-  { offset: 0, name: 'current' },
-  { offset: 1, name: 'next' },
-  { offset: 2, name: 'far-next' },
-]
+const faqSlideInterval = 3800
 
 export default function Hero() {
   const [activeFaqImage, setActiveFaqImage] = useState(1)
+  const [platformStartIndex, setPlatformStartIndex] = useState(0)
+  const visiblePlatformCards = Array.from({ length: 4 }, (_, offset) => {
+    const originalIndex = (platformStartIndex + offset) % platformCards.length
 
-  const handleSubmit = (event) => {
-    event.preventDefault()
-  }
+    return {
+      ...platformCards[originalIndex],
+      originalIndex,
+    }
+  })
+  const visiblePlatformIndexes = visiblePlatformCards.map((card) => card.originalIndex)
+  const visibleFaqImages = Array.from({ length: 3 }, (_, offset) => {
+    const originalIndex = (activeFaqImage + offset) % faqImages.length
+
+    return {
+      ...faqImages[originalIndex],
+      originalIndex,
+    }
+  })
+  const visibleFaqIndexes = visibleFaqImages.map((image) => image.originalIndex)
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setPlatformStartIndex((current) => (current + 1) % platformCards.length)
+    }, platformSlideInterval)
+
+    return () => window.clearInterval(interval)
+  }, [])
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setActiveFaqImage((current) => (current + 1) % faqImages.length)
+    }, faqSlideInterval)
+
+    return () => window.clearInterval(interval)
+  }, [])
 
   return (
     <section className="hero-section" id="hero" aria-labelledby="landing-title">
@@ -227,26 +307,15 @@ export default function Hero() {
             className="hero-banner__image"
             src={bannerDesktop}
             alt="Hè này, con lớn hơn - Khóa hè Homeschooling ApexEdu cho trẻ 5 đến 8 tuổi"
+            fetchpriority="high"
+            loading="eager"
+            decoding="async"
           />
         </picture>
 
-        <div className="hero-contact" aria-label="Thông tin liên hệ">
-          <div className="hero-contact__item hero-contact__item--phone">
-            <img src={phoneIcon} alt="" aria-hidden="true" />
-            <span>037 756 5059</span>
-          </div>
-          <div className="hero-contact__item hero-contact__item--address">
-            <img src={homeIcon} alt="" aria-hidden="true" />
-            <span>
-              Tòa nhà ApexGroup, số 979 đường ĐT 743A,
-              <br />
-              Khu phố Tân Long, Phường Dĩ An, Dĩ An, Việt Nam
-            </span>
-          </div>
-        </div>
       </div>
 
-      <div className="registration-section">
+      <div className="registration-section" id="registration-section">
         <div className="registration-card">
           <img className="registration-card__frame" src={formFrame} alt="" aria-hidden="true" />
 
@@ -256,46 +325,7 @@ export default function Hero() {
             <span>chuẩn Mỹ ngay tại Dĩ An</span>
           </div>
 
-          <form className="registration-form" onSubmit={handleSubmit}>
-            <label className="registration-field registration-field--full">
-              <span>Họ Tên Ba / Mẹ</span>
-              <input name="parentName" autoComplete="name" />
-            </label>
-
-            <label className="registration-field">
-              <span>Số ĐT</span>
-              <input name="phone" type="tel" autoComplete="tel" />
-            </label>
-
-            <label className="registration-field">
-              <span>Năm sinh bé</span>
-              <input name="birthYear" inputMode="numeric" />
-            </label>
-
-            <label className="registration-field registration-field--full">
-              <span>Khóa học ba mẹ quan tâm</span>
-              <select name="course" defaultValue="homeschooling">
-                <option value="homeschooling">Khóa Ôn Luyện Homeschooling - Bé 5-7 tuổi</option>
-                <option value="english">Tiếng Anh</option>
-                <option value="math">Toán</option>
-                <option value="logic">Tư duy logic</option>
-                <option value="skills">Kỹ năng</option>
-              </select>
-            </label>
-
-            <label className="registration-consent">
-              <input type="checkbox" name="consent" defaultChecked />
-              <span>
-                Bằng việc đăng ký thông tin, ba mẹ đồng ý cho phép ApexEdu liên hệ thông
-                qua cuộc gọi, tin nhắn nhằm mục đích tư vấn khóa học phù hợp, cập nhật các
-                chương trình ưu đãi và nghiên cứu thị trường.
-              </span>
-            </label>
-
-            <button className="registration-submit" type="submit">
-              <img src={registerButton} alt="Đăng ký ngay" />
-            </button>
-          </form>
+          <RegisterForm />
         </div>
       </div>
 
@@ -307,15 +337,18 @@ export default function Hero() {
               giúp con lớn hơn như thế nào?
             </h2>
             <p>
-              Chương trình Homeschooling 100% Tiếng Anh theo giáo trình chuẩn Mỹ, kết nối
-              toàn diện: Toán - Tiếng Anh - Tư duy logic - Ngoại khóa &amp; Kỹ năng sống,
-              giúp con lớn hơn trong cách học chủ động, nghĩ độc lập và tự tin thể hiện bản thân.
+              Chương trình Homeschooling{' '}
+              <strong>
+                100% Tiếng Anh theo giáo trình chuẩn Mỹ, kết nối toàn diện: Toán / Khoa học / Ngữ văn
+                / Kỹ năng sống
+              </strong>{' '}
+              - giúp con lớn hơn trong cách học chủ động, nghĩ độc lập và tự tin thể hiện bản thân.
             </p>
           </div>
 
           <div className="growth-list" aria-label="Các hoạt động giúp con lớn hơn">
             {growthImages.map((image) => (
-              <img key={image.src} src={image.src} alt={image.alt} />
+              <img key={image.src} src={image.src} alt={image.alt} {...lazyImageProps} />
             ))}
           </div>
         </div>
@@ -327,24 +360,33 @@ export default function Hero() {
             <span className="platform-title__primary">Nền tảng cho chương trình</span>
             <span className="platform-title__secondary">
               Homeschooling tại Apex Edu
-              <img src={platformIcon} alt="" aria-hidden="true" />
+              <img src={platformIcon} alt="" aria-hidden="true" {...lazyImageProps} />
             </span>
           </h2>
         </div>
 
         <div className="platform-slider" aria-label="Nền tảng chương trình Homeschooling">
-          {platformCards.map((card, index) => (
-            <article className="platform-card" key={card.text}>
-              <img src={card.src} alt="" aria-hidden="true" />
-              <p>{card.text}</p>
-              <span className="sr-only">Nội dung {index + 1}</span>
+          {visiblePlatformCards.map((card) => (
+            <article
+              className="platform-card"
+              key={card.id}
+            >
+              <img src={card.src} alt="" aria-hidden="true" {...lazyImageProps} />
+              <p>{card.copy}</p>
+              <span className="sr-only">Nội dung {card.originalIndex + 1}: {card.text}</span>
             </article>
           ))}
         </div>
 
-        <div className="platform-dots" aria-hidden="true">
+        <div className="platform-dots" aria-label="Chọn thẻ nền tảng chương trình">
           {platformCards.map((card, index) => (
-            <span className={index === 1 ? 'is-active' : ''} key={card.text} />
+            <button
+              className={visiblePlatformIndexes.includes(index) ? 'is-visible' : 'is-muted'}
+              key={card.id}
+              type="button"
+              onClick={() => setPlatformStartIndex(index)}
+              aria-label={`Hiển thị nhóm bắt đầu từ thẻ ${index + 1}`}
+            />
           ))}
         </div>
       </div>
@@ -354,14 +396,14 @@ export default function Hero() {
           <h2 id="summer-title">
             <span>Bắt đầu từ mùa hè này</span>
             với 2 lựa chọn cho con
-            <img src={summerPlane} alt="" aria-hidden="true" />
+            <img src={summerPlane} alt="" aria-hidden="true" {...lazyImageProps} />
           </h2>
         </div>
 
         <div className="summer-cards">
           {summerOptions.map((option) => (
             <article className="summer-card" key={option.title}>
-              <img className="summer-card__bg" src={option.src} alt="" aria-hidden="true" />
+              <img className="summer-card__bg" src={option.src} alt="" aria-hidden="true" {...lazyImageProps} />
               <div className="summer-card__content">
                 <h3>{option.title}</h3>
                 <ul>
@@ -369,7 +411,7 @@ export default function Hero() {
                     <li key={bullet}>{bullet}</li>
                   ))}
                 </ul>
-                <button className="consult-button" type="button">
+                <button className="consult-button" type="button" onClick={() => scrollToSection('registration-section')}>
                   Đăng ký tư vấn
                 </button>
               </div>
@@ -379,8 +421,7 @@ export default function Hero() {
       </div>
 
       <div
-        className="match-section"
-        style={{ '--blue-bg': `url(${blueBackground})` }}
+        className="landing-bg landing-bg--match match-section"
         aria-labelledby="match-title"
       >
         <div className="match-panel">
@@ -393,13 +434,13 @@ export default function Hero() {
           <div className="match-card-grid" aria-label="Các nhóm bé phù hợp với chương trình">
             {matchCards.map((card) => (
               <article className="match-card" key={card.label}>
-                <img className="match-card__talk" src={card.talk} alt={card.label} />
-                <img src={card.src} alt={card.alt} />
+                <img className="match-card__talk" src={card.talk} alt={card.label} {...lazyImageProps} />
+                <img src={card.src} alt={card.alt} {...lazyImageProps} />
               </article>
             ))}
           </div>
 
-          <button className="match-submit" type="button">
+          <button className="match-submit" type="button" onClick={() => scrollToSection('registration-section')}>
             <img src={registerButton} alt="Đăng ký ngay" />
           </button>
 
@@ -408,7 +449,7 @@ export default function Hero() {
             <div className="day-schedule">
               {daySchedule.map((item) => (
                 <div className="day-schedule__item" key={`${item.time}-${item.text}`}>
-                  <img className="day-schedule__time" src={item.image} alt={item.time} />
+                  <img className="day-schedule__time" src={item.image} alt={item.time} {...lazyImageProps} />
                   <span className="day-schedule__text">{item.text}</span>
                 </div>
               ))}
@@ -418,22 +459,21 @@ export default function Hero() {
       </div>
 
       <div
-        className="daily-growth-section"
-        style={{ '--white-bg': `url(${whiteBackground})` }}
+        className="landing-bg landing-bg--daily-growth daily-growth-section"
         aria-labelledby="daily-growth-title"
       >
         <div className="section-heading section-heading--daily-growth">
           <h2 id="daily-growth-title">
             <span>Mùa hè cùng Homeschooling</span>
             Thấy con lớn hơn mỗi ngày
-            <img src={dailyGrowthIcon} alt="" aria-hidden="true" />
+            <img src={dailyGrowthIcon} alt="" aria-hidden="true" {...lazyImageProps} />
           </h2>
         </div>
 
         <div className="daily-growth-cards" aria-label="Ba thay doi cua con trong mua he">
           {dailyGrowthCards.map((card) => (
             <article className="daily-growth-card" key={card.src}>
-              <img src={card.src} alt={card.alt} />
+              <img src={card.src} alt={card.alt} {...lazyImageProps} />
               <div className="daily-growth-card__content">
                 <h3>{card.title}</h3>
                 <p>{card.description}</p>
@@ -444,8 +484,7 @@ export default function Hero() {
       </div>
 
       <div
-        className="faq-section"
-        style={{ '--faq-bg': `url(${blueBackground})` }}
+        className="landing-bg landing-bg--faq faq-section"
         aria-labelledby="faq-title"
       >
         <div className="faq-inner">
@@ -470,28 +509,23 @@ export default function Hero() {
 
           <div className="faq-carousel" aria-label="Hinh anh lop hoc ApexEdu">
             <div className="faq-carousel__stage">
-              {faqCarouselSlots.map((slot) => {
-                const imageIndex = (activeFaqImage + slot.offset + faqImages.length) % faqImages.length
-                const image = faqImages[imageIndex]
-
-                return (
-                  <button
-                    className={`faq-carousel__slide faq-carousel__slide--${slot.name}`}
-                    key={`${slot.name}-${image.src}`}
-                    type="button"
-                    onClick={() => setActiveFaqImage(imageIndex)}
-                    aria-label={`Xem hình ${imageIndex + 1}`}
-                  >
-                    <img src={image.src} alt={image.alt} />
-                  </button>
-                )
-              })}
+              {visibleFaqImages.map((image) => (
+                <button
+                  className="faq-carousel__slide"
+                  key={image.src}
+                  type="button"
+                  onClick={() => setActiveFaqImage(image.originalIndex)}
+                  aria-label={`Xem hình ${image.originalIndex + 1}`}
+                >
+                  <img src={image.src} alt={image.alt} {...lazyImageProps} />
+                </button>
+              ))}
             </div>
 
             <div className="faq-carousel__dots" aria-label="Chọn hình lớp học">
               {faqImages.map((image, index) => (
                 <button
-                  className={index === activeFaqImage ? 'is-active' : ''}
+                  className={visibleFaqIndexes.includes(index) ? 'is-visible' : 'is-muted'}
                   key={image.src}
                   type="button"
                   onClick={() => setActiveFaqImage(index)}
@@ -502,38 +536,13 @@ export default function Hero() {
             </div>
           </div>
 
-          <button className="faq-submit" type="button">
+          <button className="faq-submit" type="button" onClick={() => scrollToSection('registration-section')}>
             <img src={finalCtaButton} alt="Đăng ký ngay buổi trải nghiệm miễn phí" />
           </button>
         </div>
       </div>
 
-      <footer
-        className="landing-footer"
-        style={{ '--footer-bg': `url(${footerBackground})` }}
-        aria-label="Thong tin lien he ApexEdu"
-      >
-        <div className="landing-footer__inner">
-          <div className="landing-footer__brand" aria-label="ApexEdu">
-            <span>ApexEdu</span>
-          </div>
-
-          <div className="landing-footer__contacts">
-            <div className="landing-footer__contact landing-footer__contact--address">
-              <img src={homeIcon} alt="" aria-hidden="true" />
-              <span>Toà nhà ApexGroup, số 979 Đường ĐT 743A, KP. Tân Long, P. Dĩ An, TP. Hồ Chí Minh</span>
-            </div>
-            <div className="landing-footer__contact">
-              <img src={phoneIcon} alt="" aria-hidden="true" />
-              <span>037 756 5059</span>
-            </div>
-            <div className="landing-footer__contact">
-              <img src={emailIcon} alt="" aria-hidden="true" />
-              <span>apexedu2025@gmail.com</span>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </section>
   )
 }
