@@ -27,8 +27,7 @@ export default function Footer() {
           <div className="landing-footer__contact landing-footer__contact--address">
             <img src={homeIcon} alt="" aria-hidden="true" {...footerImageProps} />
             <span>
-              Tòa nhà ApexGroup, 979 Đường ĐT 743A, Khu phố Tân Long, Phường Dĩ An,
-              Dĩ An, Việt Nam
+              Toà nhà ApexGroup, số 979 Đường ĐT 743A, Phường Dĩ An, TP. Hồ Chí Minh
             </span>
           </div>
 

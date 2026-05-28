@@ -2,8 +2,7 @@ import { useEffect, useState } from 'react'
 import RegisterForm from '../common/RegisterForm'
 import Footer from '../layout/Footer'
 import { scrollToSection } from '../../utils/scrollToSection'
-import bannerDesktop from '../../assets/Apex - Export/01 top banner opt 2.png'
-import bannerMobile from '../../assets/Apex - Export/01 top banner opt 2.png'
+import topBanner from '../../assets/Apex - Export/banner/01 top banner opt 2.png'
 import formFrame from '../../assets/Apex - Export/form 2.png'
 import registerButton from '../../assets/Apex - Export/Icon + Button/btn dk ngay.png'
 import finalCtaButton from '../../assets/Apex - Export/Icon + Button/CTA end.png'
@@ -37,6 +36,7 @@ import scheduleTimeFive from '../../assets/Apex - Export/Block 6/act 5.png'
 import scheduleTimeSix from '../../assets/Apex - Export/Block 6/act 6.png'
 import scheduleTimeSeven from '../../assets/Apex - Export/Block 6/act 7.png'
 import scheduleTimeEight from '../../assets/Apex - Export/Block 6/act 8.png'
+import scheduleTimeNine from '../../assets/Apex - Export/Block 6/act 9.png'
 import dailyGrowthIcon from '../../assets/Apex - Export/Block 7/icon 7.png'
 import dailyGrowthImageOne from '../../assets/Apex - Export/Block 7/block 7 hinh 1.png'
 import dailyGrowthImageTwo from '../../assets/Apex - Export/Block 7/block 7 hiinh 2.png'
@@ -146,17 +146,12 @@ const summerOptions = [
   {
     src: summerCardOne,
     title: 'Khóa ôn luyện Homeschooling bé 5-7 tuổi',
-    bullets: ['Học từ thứ 2 - thứ 6', 'Từ 7h-17h', 'Trong tháng 6 và 7'],
+    bullets: ['Khóa học thứ 7 & Chủ Nhật ', 'Khóa học từ thứ 2 – thứ 6 chỉ trong Tháng 6 & 7', 'Từ 7h30-16h30'],
   },
   {
     src: summerCardTwo,
-    title: 'Khóa Homeschooling bé 6-8 tuổi',
-    bullets: [
-      'Học thứ 7 & Chủ Nhật',
-      'Từ 7h-17h',
-      'Từ tháng 8 đến tháng 5 năm sau',
-      'Có bảng điểm/chứng nhận từ Ivy Global School',
-    ],
+    title: 'Khóa Chính thức Homeschooling Bé 6-8 tuổi',
+    bullets: ['Học thứ 7 & Chủ Nhật', 'Từ 7h30 - 16h30', 'Từ tháng 8 đến tháng 5 năm sau', 'Có bảng điểm/chứng nhận từ Ivy Global School'],
   },
 ]
 
@@ -188,33 +183,34 @@ const matchCards = [
 ]
 
 const daySchedule = [
-  { time: '07:00 - 08:00', image: scheduleTimeOne, text: 'Đón bé & ổn định lớp.' },
-  { time: '08:00 - 10:00', image: scheduleTimeTwo, text: 'Tiếng Anh/ Toán' },
-  { time: '10:00 - 10:30', image: scheduleTimeThree, text: 'Nghỉ ngơi & hoạt động nhẹ.' },
-  { time: '10:30 - 11:30', image: scheduleTimeFour, text: 'Tư duy logic/ kỹ năng học thuật.' },
-  { time: '11:30 - 13:30', image: scheduleTimeFive, text: 'Nghỉ trưa.' },
-  { time: '13:30 - 15:00', image: scheduleTimeSix, text: 'Kỹ năng sống/ nghệ thuật/ nấu ăn.' },
-  { time: '15:00 - 16:00', image: scheduleTimeSeven, text: 'Thể thao/ hoạt động nhóm.' },
-  { time: '16:00 - 17:00', image: scheduleTimeEight, text: 'Tổng kết & tan lớp.' },
+  { time: '07:30 - 08:00', image: scheduleTimeOne, text: 'Sinh hoạt đầu giờ' },
+  { time: '08:00 - 09:00', image: scheduleTimeTwo, text: 'Ngữ Văn / Khoa học' },
+  { time: '09:00 - 09:30', image: scheduleTimeThree, text: 'Nghỉ ngơi & hoạt động nhẹ' },
+  { time: '09:30 - 10:30', image: scheduleTimeFour, text: 'Kỹ năng sống / Toán' },
+  { time: '10:30 - 13:30', image: scheduleTimeFive, text: 'Nghỉ trưa' },
+  { time: '13:30 - 14:30', image: scheduleTimeSix, text: 'Tiếng Anh' },
+  { time: '14:30 - 15:00', image: scheduleTimeSeven, text: 'Nghỉ ngơi & ăn nhẹ' },
+  { time: '15:00 - 16:00', image: scheduleTimeEight, text: 'Nhảy / Mỹ thuật' },
+  { time: '16:00 - 16:30', image: scheduleTimeNine, text: 'Tổng kết & kết thúc buổi học' },
 ]
 
 const dailyGrowthCards = [
   {
     src: dailyGrowthImageOne,
     title: 'Con lớn hơn trong cách học',
-    description: 'Biết cách học, quen nề nếp, tập trung và chủ động tham gia.',
+    description: 'Biết cách tự học, tập trung tốt hơn và chủ động tham gia các hoạt động.',
     alt: 'Con lon hon trong cach hoc: biet cach hoc, quen ne nep, tap trung va chu dong tham gia',
   },
   {
     src: dailyGrowthImageTwo,
     title: 'Con lớn hơn trong cách nghĩ',
-    description: 'Tư duy độc lập, biết hỏi, biết thử và biết thể hiện ý tưởng của mình.',
+    description: 'Tự tin khám phá, mạnh dạn đặt câu hỏi, dám thử và biết bày tỏ quan điểm riêng.',
     alt: 'Con lon hon trong cach nghi: tu duy doc lap, biet hoi, biet thu va biet the hien y tuong cua minh',
   },
   {
     src: dailyGrowthImageThree,
     title: 'Con lớn hơn trong cách dùng tiếng Anh',
-    description: 'Dùng tiếng Anh để học, hỏi, tương tác và tự tin thể hiện.',
+    description: 'Sử dụng tiếng Anh tự nhiên để học tập, giao tiếp, tương tác hàng ngày.',
     alt: 'Con lon hon trong cach dung tieng Anh: dung tieng Anh de hoc, hoi, tuong tac va tu tin the hien',
   },
 ]
@@ -223,27 +219,27 @@ const faqItems = [
   {
     question: 'Khóa Homeschooling khác gì lớp tiếng Anh thông thường?',
     answer:
-      'Trẻ không chỉ học tiếng Anh như một môn riêng lẻ, mà dùng tiếng Anh trong các hoạt động học Toán, tư duy, kỹ năng và tương tác trong lớp học.',
+      'Trẻ không chỉ học tiếng Anh như một môn riêng lẻ, mà còn sử dụng tiếng Anh như một công cụ để học tập, giao tiếp và tư duy trong nhiều môn học khác.',
   },
   {
     question: 'Con chưa giỏi tiếng Anh có theo kịp chương trình không?',
     answer:
-      'Có. Khóa ôn luyện tháng 6-7 được thiết kế để trẻ làm quen từ nền tảng Tiếng Anh cơ bản, giúp con nghe - nói - phản xạ tiếng Anh và các kỹ năng học tập.',
+      'Có. Khóa ôn luyện tháng 6–7 được thiết kế giúp trẻ sớm làm quen với môi trường học tập quốc tế sử dụng 100% tiếng Anh, từ cách giao tiếp, tương tác đến tư duy trong lớp học.',
   },
   {
     question: 'Homeschooling có ảnh hưởng chương trình học chính không?',
     answer:
-      'Không. Chương trình tại ApexEdu được thiết kế như một lộ trình hỗ trợ, giúp con làm quen cách học theo định hướng chuẩn Mỹ, phát triển tiếng Anh, tư duy, kỹ năng và sự tự tin bên cạnh chương trình học chính.',
+      'Chương trình được thiết kế nhằm giúp con phát triển tư duy học tập tự chủ, sự tự tin và khả năng giao tiếp – phản xạ tiếng Anh tự nhiên trong môi trường chuẩn quốc tế, từ đó giúp con học tập hiệu quả, thích nghi tốt hơn với việc học trên trường.',
   },
   {
     question: 'Có phải Homeschooling chỉ dạy kiến thức học thuật?',
     answer:
-      'Không. Chương trình kết hợp học thuật với kỹ năng sống, nghệ thuật, thể thao, nấu ăn và hoạt động trải nghiệm giúp con phát triển toàn diện.',
+      'Không. Tại đây, bé không chỉ học kiến thức mà còn tham gia nhiều môn ngoại khóa như Nấu ăn, Nhảy, Mỹ thuật và các hoạt động thực hành trải nghiệm mà bé ít có cơ hội được tham gia ở trường hoặc các trung tâm Anh ngữ thông thường.',
   },
   {
-    question: 'Nên chọn khóa ôn luyện tháng 6-7 hay Homeschooling tháng 8?',
+    question: 'Ba mẹ nên cho con bắt đầu với khóa ôn luyện hay khóa học chính thức tháng 8?',
     answer:
-      'Nếu bé cần làm quen trước với tiếng Anh, Toán, tư duy và nề nếp lớp học chuẩn Mỹ, ba mẹ có thể bắt đầu với khóa ôn luyện tháng 6-7. Nếu ba mẹ đã có định hướng dài hơn cho con, có thể tìm hiểu lộ trình Homeschooling khai giảng tháng 8.',
+      'Để tham gia chương trình chính thức khai giảng tháng 8, bé sẽ cần vượt qua bài kiểm tra đầu vào. Vì vậy, ba mẹ nên bắt đầu với các khóa ôn luyện (T7–CN hoặc T2–T6) trước để con có thời gian làm quen và chuẩn bị nền tảng phù hợp. Với ba mẹ đã có định hướng cho con theo khóa học chính thức, khóa ôn giúp bé làm quen môi trường chuẩn quốc tế, củng cố nền tảng để tự tin hơn cho bài kiểm tra đầu vào. Với ba mẹ chưa có kế hoạch theo học dài hạn, khóa ôn vẫn phù hợp để bé giao tiếp Tiếng Anh tự nhiên, học cùng giáo viên nước ngoài và trải nghiệm môi trường quốc tế từ sớm.',
   },
 ]
 
@@ -301,18 +297,14 @@ export default function Hero() {
       </h1>
 
       <div className="hero-banner">
-        <picture>
-          <source media="(max-width: 640px)" srcSet={bannerMobile} />
-          <img
-            className="hero-banner__image"
-            src={bannerDesktop}
-            alt="Hè này, con lớn hơn - Khóa hè Homeschooling ApexEdu cho trẻ 5 đến 8 tuổi"
-            fetchpriority="high"
-            loading="eager"
-            decoding="async"
-          />
-        </picture>
-
+        <img
+          className="hero-banner__image"
+          src={topBanner}
+          alt="Hè này, con lớn hơn - Khóa hè Homeschooling ApexEdu cho trẻ 5 đến 8 tuổi"
+          fetchPriority="high"
+          loading="eager"
+          decoding="async"
+        />
       </div>
 
       <div className="registration-section" id="registration-section">

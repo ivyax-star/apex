@@ -1,3 +1,21 @@
+@media (min-width: 1440px) {
+  .hero-banner {
+    height: min(940px, max(37.68vw, calc(45.27vw - 230.4px)));
+  }
+}
+
+@media (min-width: 981px) and (max-width: 1439px) {
+  .hero-banner {
+    height: clamp(436px, calc(23.15vw + 209px), 542px);
+  }
+}
+
+@media (min-width: 721px) and (max-width: 980px) {
+  .hero-banner {
+    height: clamp(360px, calc(29.23vw + 149.5px), 436px);
+  }
+}
+
 @media (min-width: 981px) {
   .hero-contact {
     display: none;
@@ -42,6 +60,16 @@
     color: #ffffff;
     font-size: 0.7vw;
     padding: 0 0.8vw;
+  }
+
+  .registration-course-select {
+    height: 2.05vw;
+    line-height: 1.2;
+    padding-block: 0.16vw;
+  }
+
+  .registration-course-select span {
+    line-height: 1.2;
   }
 
   .registration-course-list {
@@ -166,7 +194,7 @@
   }
 
   .summer-cards {
-    width: min(59.375vw, calc(100vw - 80px));
+    width: min(53.125vw, calc(100vw - 80px));
     gap: 1.2vw;
     margin-top: 2.2vw;
   }
@@ -176,21 +204,31 @@
   }
 
   .summer-card__content {
-    gap: 0.38vw;
+    inset-block: 10.5% 8%;
+    inset-inline-start: 44.5%;
+    inset-inline-end: 6.5%;
+    gap: 0.45vw;
   }
 
   .summer-card__content h3 {
-    font-size: 1.05vw;
+    width: min(100%, 13.6vw);
+    font-size: 1.08vw;
   }
 
   .summer-card__content li {
-    font-size: 0.78vw;
-    padding-left: 0.95vw;
+    font-size: 0.72vw;
+    padding-left: 1.22vw;
   }
 
-  .summer-card__content li::before {
-    width: 0.45vw;
-    height: 0.45vw;
+  .summer-card__content li:first-child,
+  .summer-card:first-child .summer-card__content li:nth-child(2) {
+    padding-left: 1.55vw;
+  }
+
+  .summer-card__content li:first-child::before,
+  .summer-card:first-child .summer-card__content li:nth-child(2)::before {
+    width: 1.04vw;
+    height: 0.97vw;
   }
 
   .consult-button {
@@ -208,7 +246,7 @@
   }
 
   .match-section {
-    padding: 1.55vw 20px 4.25vw;
+    padding: clamp(48px, 4.8vw, 70px) clamp(32px, 4.5vw, 72px) 4.25vw;
   }
 
   .match-section::before {
@@ -216,14 +254,17 @@
   }
 
   .match-panel {
-    width: min(65.625vw, calc(100vw - 80px));
+    width: min(1040px, 100%);
     border-radius: 1.4vw;
-    padding: 2.05vw 1.65vw 3.2vw;
+    padding: 2.05vw clamp(16px, 1.4vw, 30px) 3.2vw;
   }
 
-  .section-heading--match h2,
-  .day-section h2 {
+  .section-heading--match h2 {
     font-size: 2.45vw;
+  }
+
+  .day-section h2 {
+    font-size: clamp(1.65rem, 3.1vw, 3.35rem);
   }
 
   .section-heading--match::before {
@@ -233,43 +274,44 @@
   }
 
   .match-card-grid {
-    gap: 1.15vw;
+    gap: clamp(8px, 0.95vw, 16px);
     margin-top: 1.65vw;
   }
 
   .match-card__talk {
-    width: min(100%, 14.1vw);
-    margin-bottom: -0.4vw;
+    width: auto;
+    max-width: 100%;
+    margin-bottom: clamp(-18px, -1.4vw, -10px);
   }
 
   .match-submit {
-    width: 22.75vw;
+    width: min(318px, 100%);
     margin-top: 1.2vw;
   }
 
   .day-section {
-    margin-top: 2.2vw;
+    margin-top: clamp(32px, 4vw, 54px);
   }
 
   .day-section h2::before {
-    width: 1.7vw;
-    height: 1.7vw;
-    margin-right: 0.65vw;
-    border-width: 0.22vw;
+    width: clamp(34px, 4.2vw, 58px);
+    height: clamp(34px, 4.2vw, 58px);
+    margin-right: clamp(10px, 1.4vw, 20px);
+    border-width: 2px;
   }
 
   .day-schedule {
-    gap: 1vw 5.2vw;
-    margin-top: 2.35vw;
+    gap: clamp(14px, 1.75vw, 28px) clamp(24px, 3.5vw, 52px);
+    margin-top: clamp(22px, 3vw, 38px);
   }
 
   .day-schedule__item {
-    gap: 0.78vw;
-    font-size: 0.86vw;
+    gap: clamp(14px, 1.8vw, 28px);
+    font-size: clamp(0.82rem, 1.08vw, 1.08rem);
   }
 
   .day-schedule__time {
-    width: 10.15vw;
+    width: min(330px, 100%);
   }
 
   .daily-growth-section {
@@ -286,21 +328,29 @@
   }
 
   .daily-growth-cards {
-    width: min(69.375vw, calc(100vw - 80px));
-    gap: 2.2vw;
+    width: min(clamp(650px, 50vw, 940px), calc(100vw - 80px));
+    gap: clamp(16px, 1.45vw, 24px);
     margin-top: 2.1vw;
   }
 
   .daily-growth-card__content {
-    gap: 0.55vw;
+    inset-block-start: 60.5%;
+    inset-block-end: 4.8%;
+    align-content: center;
+    gap: clamp(8px, 0.72vw, 12px);
+    padding-block-start: 0;
   }
 
   .daily-growth-card__content h3 {
-    font-size: 1.28vw;
+    font-size: 0.94vw;
+    line-height: 0.98;
   }
 
   .daily-growth-card__content p {
-    font-size: 0.84vw;
+    width: min(100%, 15.9vw);
+    font-size: 0.67vw;
+    line-height: 1.15;
+    text-align: center;
   }
 
   .faq-section {
@@ -379,7 +429,7 @@
   }
 
   .faq-submit {
-    width: 27.27vw;
+    width: min(349px, 100%);
     margin-top: 1.5vw;
   }
 
@@ -449,33 +499,70 @@
     font-size: 0.5rem;
   }
 
+  .registration-section {
+    padding: clamp(34px, 4.2vw, 44px) clamp(44px, 5vw, 54px) clamp(40px, 5vw, 54px);
+  }
+
+  .registration-card {
+    width: min(960px, 100%);
+  }
+
   .registration-card__title {
-    font-size: 1.22rem;
-    padding-inline: 26px;
+    font-size: clamp(1.48rem, 2.85vw, 1.82rem);
+    line-height: 1.32;
+    padding-inline: clamp(24px, 4.2vw, 46px);
   }
 
   .registration-form {
-    gap: 6px 10px;
-    padding-inline: 28px;
+    gap: 8px clamp(12px, 2vw, 16px);
+    padding: clamp(24px, 2.75vw, 30px) clamp(30px, 4vw, 38px) 16px clamp(28px, 3.4vw, 34px);
   }
 
   .registration-field span {
-    font-size: 0.5rem;
+    font-size: clamp(0.56rem, 1.12vw, 0.68rem);
   }
 
   .registration-course-group legend {
-    font-size: 0.5rem;
+    font-size: clamp(0.56rem, 1.12vw, 0.68rem);
   }
 
   .registration-field input,
   .registration-field select,
   .registration-course-select {
-    height: 18px;
-    font-size: 0.5rem;
+    height: clamp(21px, 2.35vw, 24px);
+    font-size: clamp(0.5rem, 1vw, 0.58rem);
+  }
+
+  .registration-course-select {
+    height: clamp(25px, 2.75vw, 29px);
+    line-height: 1.2;
+    padding-block: 3px;
+  }
+
+  .registration-course-select span {
+    line-height: 1.2;
   }
 
   .registration-consent {
-    font-size: 0.42rem;
+    gap: 6px;
+    font-size: clamp(0.42rem, 0.8vw, 0.48rem);
+  }
+
+  .registration-submit-wrap {
+    position: absolute;
+    inset-inline-start: 50%;
+    inset-block-end: clamp(-17px, -1.8vw, -12px);
+    width: clamp(220px, 26vw, 245px);
+    margin: 0;
+    transform: translateX(-50%);
+  }
+
+  .registration-submit {
+    width: 100%;
+  }
+
+  .registration-submit-tooltip {
+    width: min(240px, 100%);
   }
 
   .growth-panel {
@@ -483,7 +570,9 @@
   }
 
   .platform-slider {
-    width: min(760px, calc(100vw - 40px));
+    --platform-track-width: min(760px, calc(100vw - 40px));
+    width: calc((var(--platform-card-width) * 4) + (var(--platform-gap) * 3));
+    max-width: calc(100vw - 40px);
   }
 
   .platform-card p {
@@ -496,7 +585,11 @@
   .daily-growth-cards,
   .faq-inner,
   .landing-footer__inner {
-    width: min(760px, calc(100vw - 40px));
+    width: min(720px, calc(100vw - 40px));
+  }
+
+  .summer-cards {
+    width: min(680px, calc(100vw - 40px));
   }
 
   .landing-footer {
@@ -531,7 +624,8 @@
   }
 
   .summer-card__content {
-    inset-inline-start: 43%;
+    inset-inline-start: 44%;
+    inset-inline-end: 6%;
   }
 
   .match-card__label {
@@ -551,9 +645,116 @@
   }
 }
 
+@media (min-width: 721px) and (max-width: 968px) {
+  .registration-section {
+    padding: clamp(28px, 4vw, 38px) clamp(24px, 4.8vw, 46px) clamp(54px, 7vw, 70px);
+  }
+
+  .registration-card {
+    width: min(620px, 100%);
+    aspect-ratio: auto;
+    overflow: visible;
+    border: 2px solid #0057bc;
+    border-radius: 30px;
+    background: #0057bc;
+    padding: clamp(26px, 3.6vw, 34px) clamp(26px, 4vw, 38px) clamp(24px, 3.5vw, 32px);
+  }
+
+  .registration-card__frame {
+    display: none;
+  }
+
+  .registration-card__title {
+    position: static;
+    width: 100%;
+    padding: 0 clamp(10px, 2.4vw, 22px) clamp(22px, 3vw, 28px);
+    font-size: clamp(1.45rem, 3.2vw, 1.85rem);
+    line-height: 1.28;
+  }
+
+  .registration-form {
+    position: static;
+    width: 100%;
+    height: auto;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px 14px;
+    border: 2px solid #0057bc;
+    border-radius: 26px;
+    background: #ffffff;
+    padding: clamp(22px, 3.4vw, 30px) clamp(22px, 3.6vw, 34px) clamp(24px, 3.8vw, 32px);
+  }
+
+  .registration-field span,
+  .registration-course-group legend {
+    font-size: 0.72rem;
+  }
+
+  .registration-field input,
+  .registration-field select,
+  .registration-course-select {
+    height: 34px;
+    font-size: 0.72rem;
+    padding-inline: 14px;
+  }
+
+  .registration-course-select {
+    height: 38px;
+    padding-block: 4px;
+  }
+
+  .registration-consent {
+    gap: 8px;
+    font-size: 0.58rem;
+    line-height: 1.25;
+  }
+
+  .registration-consent input {
+    width: 13px;
+    height: 13px;
+  }
+
+  .registration-course-list {
+    gap: 8px;
+    padding: 10px 12px;
+  }
+
+  .registration-course-option {
+    font-size: 0.66rem;
+    padding: 7px 8px;
+  }
+
+  .registration-error,
+  .registration-message {
+    font-size: 0.6rem;
+  }
+
+  .registration-submit-wrap {
+    position: relative;
+    inset: auto;
+    width: auto;
+    margin-top: 2px;
+    transform: none;
+  }
+
+  .registration-submit {
+    width: min(240px, 100%);
+  }
+
+  .registration-submit-tooltip {
+    position: static;
+    width: 100%;
+    margin-bottom: 8px;
+    transform: none;
+  }
+}
+
 @media (max-width: 720px) {
   .hero-section {
     --footer-overlap: 58px;
+  }
+
+  .hero-banner {
+    height: clamp(220px, 55vw, 360px);
   }
 
   .hero-contact {
@@ -593,7 +794,7 @@
   }
 
   .registration-card {
-    width: min(393px, 100%);
+    width: min(560px, 100%);
     aspect-ratio: auto;
     overflow: hidden;
     border: 2px solid #0057bc;
@@ -610,7 +811,7 @@
     position: static;
     width: 100%;
     padding: 0 8px 18px;
-    font-size: 1.08rem;
+    font-size: clamp(1.08rem, 4.4vw, 1.48rem);
     line-height: 1.35;
   }
 
@@ -627,18 +828,28 @@
   }
 
   .registration-field span {
-    font-size: 0.7rem;
+    font-size: clamp(0.7rem, 2.2vw, 0.78rem);
   }
 
   .registration-course-group legend {
-    font-size: 0.7rem;
+    font-size: clamp(0.7rem, 2.2vw, 0.78rem);
   }
 
   .registration-field input,
   .registration-field select,
   .registration-course-select {
-    height: 30px;
+    height: clamp(30px, 5vw, 34px);
     font-size: 0.72rem;
+  }
+
+  .registration-course-select {
+    height: clamp(34px, 5.6vw, 38px);
+    line-height: 1.2;
+    padding-block: 3px;
+  }
+
+  .registration-course-select span {
+    line-height: 1.2;
   }
 
   .registration-consent {
@@ -667,11 +878,15 @@
   }
 
   .registration-submit-wrap {
+    position: relative;
+    inset: auto;
+    width: auto;
     margin-top: 4px;
+    transform: none;
   }
 
   .registration-submit {
-    width: 170px;
+    width: clamp(170px, 44vw, 220px);
     margin-top: 0;
   }
 
@@ -737,7 +952,7 @@
   .growth-list {
     grid-template-columns: 1fr;
     gap: 12px;
-    width: min(258px, 100%);
+    width: min(260px, 100%);
     margin-inline: auto;
     padding-inline: 0;
   }
@@ -798,17 +1013,19 @@
   }
 
   .summer-cards {
-    width: min(370px, 100%);
+    width: min(326px, 100%);
     grid-template-columns: 1fr;
     gap: 16px;
   }
 
   .summer-card__content h3 {
-    font-size: 0.86rem;
+    width: min(100%, 166px);
+    font-size: 0.8rem;
   }
 
   .summer-card__content li {
-    font-size: 0.64rem;
+    font-size: 0.58rem;
+    padding-left: 15px;
   }
 
   .match-section {
@@ -846,27 +1063,46 @@
   }
 
   .match-submit {
-    width: 170px;
+    width: min(318px, 100%);
     margin-top: 16px;
   }
 
   .day-section h2 {
-    font-size: 1.2rem;
+    font-size: clamp(1.55rem, 7vw, 2.25rem);
+    line-height: 1.08;
+    white-space: normal;
+  }
+
+  .day-section h2::before {
+    width: 28px;
+    height: 28px;
+    margin-right: 8px;
   }
 
   .day-schedule {
     grid-template-columns: 1fr;
     grid-template-rows: none;
     grid-auto-flow: row;
-    gap: 10px;
+    width: min(330px, 100%);
+    gap: 14px;
+    margin: 18px auto 0;
   }
 
   .day-schedule__item {
-    font-size: 0.72rem;
+    grid-template-columns: 1fr;
+    justify-items: start;
+    gap: 5px;
+    font-size: 0.86rem;
+    line-height: 1.18;
   }
 
   .day-schedule__time {
-    width: 108px;
+    width: min(240px, 100%);
+  }
+
+  .day-schedule__text {
+    display: block;
+    max-width: 100%;
   }
 
   .daily-growth-section {
@@ -888,27 +1124,43 @@
   }
 
   .daily-growth-cards {
-    width: min(277px, 100%);
+    width: min(292px, 100%);
     grid-template-columns: 1fr;
-    gap: 14px;
+    gap: 16px;
+  }
+
+  .daily-growth-card {
+    aspect-ratio: 277 / 315;
+    overflow: hidden;
+    border-radius: 14px;
+  }
+
+  .daily-growth-card img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    max-width: none;
   }
 
   .daily-growth-card__content {
-    inset-inline: 8.5%;
-    inset-block-end: 6.4%;
-    min-height: 31%;
+    inset-inline: 9%;
+    inset-block-start: 60.8%;
+    inset-block-end: 3.4%;
     align-content: center;
-    gap: 5px;
+    gap: 10px;
+    padding-block-start: 0;
   }
 
   .daily-growth-card__content h3 {
-    font-size: 0.9rem;
-    line-height: 1.08;
+    font-size: 1rem;
+    line-height: 1;
   }
 
   .daily-growth-card__content p {
-    font-size: 0.68rem;
-    line-height: 1.18;
+    width: min(100%, 238px);
+    font-size: 0.72rem;
+    line-height: 1.12;
+    text-align: center;
   }
 
   .faq-section {
@@ -943,23 +1195,37 @@
   }
 
   .faq-carousel {
-    width: min(430px, 100%);
+    width: min(360px, 100%);
+    margin-top: 18px;
   }
 
   .faq-carousel__stage {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
     gap: 8px;
   }
 
   .faq-carousel__slide {
     width: 100%;
+    aspect-ratio: 16 / 10;
+  }
+
+  .faq-carousel__slide:nth-child(n + 3) {
+    display: none;
   }
 
   .faq-carousel__dots {
-    gap: 16px;
+    gap: 14px;
+    margin-top: 12px;
+  }
+
+  .faq-carousel__dots button {
+    width: 10px;
+    height: 10px;
   }
 
   .faq-submit {
-    width: min(310px, 100%);
+    width: min(349px, 100%);
     margin-top: 18px;
   }
 
@@ -1028,6 +1294,10 @@
 }
 
 @media (max-width: 420px) {
+  .hero-banner {
+    height: clamp(190px, 55vw, 231px);
+  }
+
   .hero-contact {
     align-items: center;
     justify-content: center;
@@ -1087,24 +1357,30 @@
   }
 
   .summer-card__content {
-    inset-block: 9% 7%;
-    inset-inline-start: 42%;
+    inset-block: 9.5% 7%;
+    inset-inline-start: 43%;
     inset-inline-end: 5%;
     gap: 3px;
   }
 
   .summer-card__content h3 {
-    font-size: 0.72rem;
+    font-size: 0.68rem;
   }
 
   .summer-card__content li {
-    font-size: 0.54rem;
-    padding-left: 9px;
+    font-size: 0.5rem;
+    padding-left: 13px;
   }
 
-  .summer-card__content li::before {
-    width: 5px;
-    height: 5px;
+  .summer-card__content li:first-child,
+  .summer-card:first-child .summer-card__content li:nth-child(2) {
+    padding-left: 18px;
+  }
+
+  .summer-card__content li:first-child::before,
+  .summer-card:first-child .summer-card__content li:nth-child(2)::before {
+    width: 13px;
+    height: 12px;
   }
 
   .consult-button {
@@ -1127,8 +1403,13 @@
 
   .day-schedule__item {
     grid-template-columns: 1fr;
-    gap: 4px;
+    gap: 5px;
     justify-items: start;
+    font-size: 0.8rem;
+  }
+
+  .day-schedule__time {
+    width: min(220px, 100%);
   }
 
   .section-heading--daily-growth h2 {
@@ -1139,13 +1420,31 @@
     width: 50px;
   }
 
+  .daily-growth-cards {
+    width: min(280px, 100%);
+  }
+
+  .daily-growth-card {
+    aspect-ratio: 277 / 308;
+  }
+
+  .daily-growth-card__content {
+    inset-block-start: 60.4%;
+    inset-block-end: 3.2%;
+    align-content: center;
+    gap: 8px;
+    padding-block-start: 0;
+  }
+
   .daily-growth-card__content h3 {
-    font-size: 0.84rem;
+    font-size: 0.96rem;
+    line-height: 1;
   }
 
   .daily-growth-card__content p {
-    font-size: 0.62rem;
-    line-height: 1.16;
+    width: min(100%, 238px);
+    font-size: 0.68rem;
+    line-height: 1.12;
   }
 
   .section-heading--faq h2 {
@@ -1153,11 +1452,19 @@
   }
 
   .faq-carousel__stage {
-    gap: 6px;
+    gap: 7px;
   }
 
   .faq-carousel__slide {
     width: 100%;
+  }
+
+  .faq-carousel {
+    width: min(330px, 100%);
+  }
+
+  .faq-carousel__slide:not(:first-child) {
+    aspect-ratio: 16 / 10;
   }
 
   .landing-footer__brand {
