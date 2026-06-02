@@ -998,7 +998,7 @@
   padding-inline-end: clamp(52px, 7vw, 82px);
   color: #0055bf;
   font-size: clamp(1.16rem, 2.06vw, 1.86rem);
-  line-height: 1;
+  line-height: 1.12;
   text-transform: uppercase;
 }
 
@@ -1248,6 +1248,7 @@
   --footer-icon-size: clamp(38px, 3.2vw, 42px);
   --footer-social-size: clamp(24px, 2vw, 28px);
   --footer-contact-gap: clamp(10px, 1vw, 14px);
+  --footer-text-size: clamp(0.78rem, 0.86vw, 0.94rem);
   position: relative;
   z-index: 1;
   overflow: visible;
@@ -1304,9 +1305,9 @@
   align-items: center;
   gap: var(--footer-contact-gap);
   color: #173b4f;
-  font-size: clamp(0.72rem, 0.9vw, 0.92rem);
+  font-size: var(--footer-text-size);
   font-weight: 900;
-  line-height: 1.14;
+  line-height: 1.18;
   text-transform: uppercase;
 }
 
@@ -1327,20 +1328,23 @@
 
 .landing-footer__contact--phone {
   grid-area: phone;
-  display: inline-grid;
-  grid-template-columns: var(--footer-icon-size) max-content;
+  display: inline-flex;
+  min-height: var(--footer-icon-size);
   align-self: center;
   align-items: center;
-  column-gap: var(--footer-contact-gap);
+  gap: var(--footer-contact-gap);
   color: #173b4f;
-  font-size: clamp(1rem, 1.35vw, 1.22rem);
+  font-size: var(--footer-text-size);
   line-height: 1;
   white-space: nowrap;
 }
 
 .landing-footer__contact--phone span {
+  display: inline-flex;
   flex: 0 0 auto;
+  align-items: center;
   min-width: max-content;
+  line-height: 1;
   overflow-wrap: normal;
   white-space: nowrap;
 }
