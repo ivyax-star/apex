@@ -3,15 +3,13 @@ import RegisterForm from '../common/RegisterForm'
 import Footer from '../layout/Footer'
 import { scrollToSection } from '../../utils/scrollToSection'
 import topBanner from '../../assets/Apex - Export/banner/01 top banner opt 2.png'
-import formFrame from '../../assets/Apex - Export/form 2.png'
 import registerButton from '../../assets/Apex - Export/Icon + Button/btn dk ngay.png'
 import finalCtaButton from '../../assets/Apex - Export/Icon + Button/CTA end.png'
 import faqBulletIcon from '../../assets/Apex - Export/Icon + Button/bullet.png'
 import faqArrowIcon from '../../assets/Apex - Export/Icon + Button/arrow.png'
-import growthImageOne from '../../assets/Apex - Export/Block 2/h1.png'
-import growthImageTwo from '../../assets/Apex - Export/Block 2/h2.png'
-import growthImageThree from '../../assets/Apex - Export/Block 2/h3.png'
-import platformIcon from '../../assets/Apex - Export/Block 3/icon headline 2.png'
+import growthImageOne from '../../assets/Apex - Export/Block 2/Block 1A Text.png'
+import growthImageTwo from '../../assets/Apex - Export/Block 2/Block 1B Text.png'
+import growthImageThree from '../../assets/Apex - Export/Block 2/Block 1C Text.png'
 import platformImageOne from '../../assets/Apex - Export/Block 3/img 1.png'
 import platformImageTwo from '../../assets/Apex - Export/Block 3/imae 2.png'
 import platformImageThree from '../../assets/Apex - Export/Block 3/img 3.png'
@@ -19,11 +17,14 @@ import platformImageFour from '../../assets/Apex - Export/Block 3/img 4.png'
 import platformImageFive from '../../assets/Apex - Export/Block 3/img 5.png'
 import summerCardOne from '../../assets/Apex - Export/Block 4/banner khoa hoc 1.png'
 import summerCardTwo from '../../assets/Apex - Export/Block 4/banner khoa hoc 2.png'
+import summerConsultButton from '../../assets/Apex - Export/Block 4/CTA Tu van.png'
 import summerPlane from '../../assets/Apex - Export/Block 4/icon 4.png'
 import matchImageOne from '../../assets/Apex - Export/Block 5/h1.png'
 import matchImageTwo from '../../assets/Apex - Export/Block 5/h2.png'
 import matchImageThree from '../../assets/Apex - Export/Block 5/h3.png'
 import matchImageFour from '../../assets/Apex - Export/Block 5/h4.png'
+import matchFaqIcon from '../../assets/Apex - Export/Block 5/icon FAQ.png'
+import faqTitleIcon from '../../assets/Apex - Export/Block 5/icon FAQ 1.png'
 import matchTalkOne from '../../assets/Apex - Export/Block 5/talk 1.png'
 import matchTalkTwo from '../../assets/Apex - Export/Block 5/talk 2.png'
 import matchTalkThree from '../../assets/Apex - Export/Block 5/talk 3.png'
@@ -309,12 +310,12 @@ export default function Hero() {
 
       <div className="registration-section" id="registration-section">
         <div className="registration-card">
-          <img className="registration-card__frame" src={formFrame} alt="" aria-hidden="true" />
-
           <div className="registration-card__title">
-            <span>Đăng ký trải nghiệm</span>
+            <span className="registration-card__eyebrow">Đăng ký trải nghiệm</span>
             <strong>Homeschooling</strong>
-            <span>chuẩn Mỹ ngay tại Dĩ An</span>
+            <span className="registration-card__location">
+              <strong>Chuẩn Mỹ</strong> <span>ngay tại</span> <strong>Dĩ An</strong>
+            </span>
           </div>
 
           <RegisterForm />
@@ -328,13 +329,13 @@ export default function Hero() {
               <span>Homeschooling ApexEdu</span>
               giúp con lớn hơn như thế nào?
             </h2>
-            <p>
-              Chương trình Homeschooling{' '}
-              <strong>
-                100% Tiếng Anh theo giáo trình chuẩn Mỹ, kết nối toàn diện: Toán / Khoa học / Ngữ văn
-                / Kỹ năng sống
-              </strong>{' '}
-              - giúp con lớn hơn trong cách học chủ động, nghĩ độc lập và tự tin thể hiện bản thân.
+            <p className="program-description">
+              <span className="program-line">Chương trình</span>
+              <span className="program-line"><strong>Homeschooling 100% Tiếng Anh</strong></span>
+              <span className="program-line">theo giáo trình chuẩn Mỹ,</span>
+              <span className="program-line">kết nối toàn diện:</span>
+              <span className="program-line"><strong>Toán / Khoa học / Ngữ văn / Kỹ năng sống</strong></span>
+              <span className="program-line">- giúp con lớn hơn trong cách học chủ động, nghĩ độc lập và tự tin thể hiện bản thân.</span>
             </p>
           </div>
 
@@ -352,7 +353,6 @@ export default function Hero() {
             <span className="platform-title__primary">Nền tảng cho chương trình</span>
             <span className="platform-title__secondary">
               Homeschooling tại Apex Edu
-              <img src={platformIcon} alt="" aria-hidden="true" {...lazyImageProps} />
             </span>
           </h2>
         </div>
@@ -404,7 +404,7 @@ export default function Hero() {
                   ))}
                 </ul>
                 <button className="consult-button" type="button" onClick={() => scrollToSection('registration-section')}>
-                  Đăng ký tư vấn
+                  <img src={summerConsultButton} alt="Đăng ký tư vấn" />
                 </button>
               </div>
             </article>
@@ -420,6 +420,7 @@ export default function Hero() {
           <div className="section-heading section-heading--match">
             <h2 id="match-title">
               <span>Khóa học</span> phù hợp với bé nào?
+              <img className="match-title__icon" src={matchFaqIcon} alt="" aria-hidden="true" {...lazyImageProps} />
             </h2>
           </div>
 
@@ -483,6 +484,7 @@ export default function Hero() {
           <div className="section-heading section-heading--faq">
             <h2 id="faq-title">
               Ba mẹ còn đang <span>băn khoăn?</span>
+              <img className="faq-title__icon" src={faqTitleIcon} alt="" aria-hidden="true" {...lazyImageProps} />
             </h2>
           </div>
 

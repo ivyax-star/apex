@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react'
-import registerButton from '../../assets/Apex - Export/Icon + Button/btn dk ngay.png'
+import registerButton from '../../assets/Apex - Export/02 Form/CTA dk ngay.png'
 
 const SUBMIT_ENDPOINT =
   'https://script.google.com/macros/s/AKfycbxuO4CZ7HjMlD0mvIMdcn9BUmZkH6-uK3JhmG6yCmniBIS5QLXF4Yx2Mn3AipjlT1wTvw/exec'
@@ -321,7 +321,7 @@ export default function RegisterForm() {
             disabled={isSubmitDisabled}
             aria-busy={isSubmitting ? 'true' : undefined}
           >
-            <img src={registerButton} alt="Đăng ký ngay" />
+            <img src={registerButton} alt="Đăng ký ngay" width="460" height="120" />
             {isSubmitting && <span className="registration-submit__spinner" aria-hidden="true" />}
           </button>
         </div>

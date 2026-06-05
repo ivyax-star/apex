@@ -4,6 +4,7 @@ import phoneIcon from '../../assets/Apex - Export/Icon + Button/icon dt.png'
 import facebookIcon from '../../assets/Apex - Export/icon social/icon fb.png'
 import zaloIcon from '../../assets/Apex - Export/icon social/icon zalo.png'
 import messengerIcon from '../../assets/Apex - Export/icon social/icon mes.png'
+import footerBackground from '../../assets/Apex - Export/BG_/10 Footer.png'
 import footerLogo from '../../assets/Apex - Export/logo/AVATAR.png'
 
 const footerImageProps = {
@@ -18,6 +19,8 @@ export default function Footer() {
       id="footer"
       aria-label="Thông tin liên hệ ApexEdu"
     >
+      <img className="landing-footer__bg" src={footerBackground} alt="" aria-hidden="true" {...footerImageProps} />
+
       <div className="landing-footer__inner">
         <div className="landing-footer__brand" aria-label="ApexEdu">
           <img className="landing-footer__logo" src={footerLogo} alt="ApexEdu" {...footerImageProps} />
