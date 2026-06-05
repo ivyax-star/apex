@@ -14,6 +14,28 @@
   .hero-banner {
     height: clamp(360px, calc(29.23vw + 149.5px), 436px);
   }
+
+  .match-card-grid {
+    --match-card-max: 190px;
+    --match-grid-gap: clamp(8px, 1.15vw, 12px);
+    width: min(
+      100%,
+      calc(
+        var(--match-card-max) + var(--match-card-max) + var(--match-card-max) + var(--match-card-max) +
+          var(--match-grid-gap) + var(--match-grid-gap) + var(--match-grid-gap)
+      )
+    );
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--match-grid-gap);
+  }
+
+  .match-card {
+    row-gap: 2px;
+  }
+
+  .match-card__talk {
+    inline-size: min(100%, 180px);
+  }
 }
 
 @media (min-width: 981px) {
@@ -214,8 +236,10 @@
   }
 
   .summer-cards {
-    width: min(53.125vw, calc(100vw - 80px));
-    gap: 1.2vw;
+    --summer-card-max: 590px;
+    --summer-card-gap: clamp(24px, 2.4vw, 40px);
+    width: min(calc((var(--summer-card-max) * 2) + var(--summer-card-gap)), calc(100vw - 80px));
+    gap: var(--summer-card-gap);
     margin-top: 2.2vw;
   }
 
@@ -224,35 +248,47 @@
   }
 
   .summer-card__content {
-    inset-block: 10.5% 8%;
-    inset-inline-start: 44.5%;
-    inset-inline-end: 6.5%;
-    gap: 0.45vw;
+    inset-block: 7.5% 6.5%;
+    inset-inline-start: 42.8%;
+    inset-inline-end: 5%;
+    grid-template-rows: auto auto auto;
+    align-content: space-evenly;
+    gap: 0;
   }
 
   .summer-card__content h3 {
-    width: min(100%, 13.6vw);
-    font-size: 1.08vw;
+    width: 100%;
+    font-size: clamp(1.02rem, 1.18vw, 1.32rem);
+    line-height: 1.03;
+  }
+
+  .summer-card__content ul {
+    min-height: 0;
+    align-content: start;
+    justify-self: start;
+    gap: clamp(3px, 0.35vw, 6px);
   }
 
   .summer-card__content li {
-    font-size: 0.72vw;
-    padding-left: 1.22vw;
+    font-size: clamp(0.78rem, 1vw, 3.88rem);
+    line-height: 1.1;
+    padding-left: clamp(13px, 1.08vw, 16px);
   }
 
   .summer-card__content li:first-child,
   .summer-card:first-child .summer-card__content li:nth-child(2) {
-    padding-left: 1.55vw;
+    padding-left: clamp(18px, 1.42vw, 22px);
   }
 
   .summer-card__content li:first-child::before,
   .summer-card:first-child .summer-card__content li:nth-child(2)::before {
-    width: 1.04vw;
-    height: 0.97vw;
+    width: clamp(13px, 0.98vw, 15px);
+    height: clamp(12px, 0.92vw, 14px);
   }
 
   .consult-button {
-    width: min(100%, clamp(116px, 12vw, 166px));
+    width: min(100%, clamp(164px, 12vw, 200px));
+    justify-self: center;
     min-height: 0;
     border: 0;
     padding: 0;
@@ -274,7 +310,7 @@
   }
 
   .match-panel {
-    width: min(1040px, 100%);
+    width: min(1360px, 100%);
     border-radius: 1.9vw;
     padding: 2.45vw clamp(24px, 3.35vw, 58px) 3.25vw;
   }
@@ -293,14 +329,26 @@
   }
 
   .match-card-grid {
-    gap: clamp(8px, 0.95vw, 16px);
-    margin-top: 1.65vw;
+    --match-card-max: 300px;
+    --match-grid-gap: clamp(10px, 1vw, 14px);
+    width: min(
+      100%,
+      calc(
+        var(--match-card-max) + var(--match-card-max) + var(--match-card-max) + var(--match-card-max) +
+          var(--match-grid-gap) + var(--match-grid-gap) + var(--match-grid-gap)
+      )
+    );
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--match-grid-gap);
+    margin-top: 1.2vw;
+  }
+
+  .match-card {
+    row-gap: 2px;
   }
 
   .match-card__talk {
-    width: auto;
-    max-width: 100%;
-    margin-bottom: clamp(-18px, -1.4vw, -10px);
+    inline-size: min(96%, 280px);
   }
 
   .match-submit {
@@ -346,28 +394,28 @@
   }
 
   .daily-growth-cards {
-    width: min(clamp(650px, 50vw, 940px), calc(100vw - 80px));
+    width: min(clamp(760px, 58vw, 940px), calc(100vw - 80px));
     gap: clamp(16px, 1.45vw, 24px);
     margin-top: 2.1vw;
   }
 
   .daily-growth-card__content {
-    inset-block-start: 60.5%;
+    inset-block-start: 74%;
     inset-block-end: 4.8%;
     align-content: center;
-    gap: clamp(8px, 0.72vw, 12px);
+    gap: clamp(5px, 0.55vw, 9px);
     padding-block-start: 0;
   }
 
   .daily-growth-card__content h3 {
-    font-size: 0.94vw;
+    font-size: clamp(0.78rem, 1.05vw, 0.98rem);
     line-height: 0.98;
   }
 
   .daily-growth-card__content p {
-    width: min(100%, 15.9vw);
-    font-size: 0.67vw;
-    line-height: 1.15;
+    width: min(100%, 220px);
+    font-size: clamp(0.58rem, 0.76vw, 0.72rem);
+    line-height: 1.13;
     text-align: center;
   }
 
@@ -514,6 +562,50 @@
   }
 }
 
+@media (min-width: 1531px) {
+  .summer-card__content li {
+    font-size: clamp(0.78rem, 0.7vw, 3.88rem);
+  }
+}
+
+@media (min-width: 1349px) and (max-width: 1530px) {
+  .summer-card__content li {
+    font-size: clamp(0.78rem, 0.9vw, 3.88rem);
+  }
+}
+
+@media (min-width: 981px) and (max-width: 1348px) {
+  .summer-cards {
+    --summer-card-max: clamp(470px, 42vw, 555px);
+    --summer-card-gap: clamp(20px, 2.1vw, 30px);
+  }
+
+  .summer-card__content {
+    inset-block: 7% 5.5%;
+    inset-inline-start: 41.8%;
+    inset-inline-end: 4.8%;
+    align-content: space-evenly;
+  }
+
+  .summer-card__content h3 {
+    font-size: clamp(1.08rem, 1.38vw, 1.24rem);
+    line-height: 1.03;
+  }
+
+  .summer-card__content ul {
+    gap: clamp(3px, 0.34vw, 5px);
+  }
+
+  .summer-card__content li {
+    font-size: clamp(0.74rem, 0.9vw, 0.82rem);
+    line-height: 1.1;
+  }
+
+  .consult-button {
+    width: min(100%, clamp(170px, 13vw, 190px));
+  }
+}
+
 @media (max-width: 980px) {
   .hero-section {
     --landing-section-title-size: 1.48rem;
@@ -629,8 +721,15 @@
     width: min(720px, calc(100vw - 40px));
   }
 
+  .match-panel {
+    width: min(900px, calc(100vw - 40px));
+  }
+
   .summer-cards {
-    width: min(680px, calc(100vw - 40px));
+    --summer-card-max: 590px;
+    --summer-card-gap: clamp(18px, 2.2vw, 26px);
+    width: min(calc((var(--summer-card-max) * 2) + var(--summer-card-gap)), calc(100vw - 40px));
+    gap: var(--summer-card-gap);
   }
 
   .landing-footer {
@@ -701,6 +800,39 @@
 
   .faq-carousel {
     width: min(790px, 100%);
+  }
+}
+
+@media (min-width: 901px) and (max-width: 980px) {
+  .summer-cards {
+    width: min(900px, calc(100vw - 56px));
+    gap: 18px;
+  }
+
+  .summer-card__content {
+    inset-block: 7.5% 5.5%;
+    inset-inline-start: 42%;
+    inset-inline-end: 5%;
+    align-content: space-evenly;
+  }
+
+  .summer-card__content h3 {
+    width: 100%;
+    font-size: clamp(1.04rem, 1.5vw, 1.12rem);
+    line-height: 1.03;
+  }
+
+  .summer-card__content ul {
+    gap: 3px;
+  }
+
+  .summer-card__content li {
+    font-size: clamp(0.72rem, 1.08vw, 0.76rem);
+    line-height: 1.09;
+  }
+
+  .consult-button {
+    width: min(100%, 168px);
   }
 }
 
@@ -815,6 +947,40 @@
     width: min(220px, 100%);
     margin-bottom: 0;
     transform: translateX(-50%);
+  }
+}
+
+@media (min-width: 721px) {
+  .registration-form {
+    row-gap: clamp(5px, 0.72vw, 8px);
+  }
+
+  .registration-field,
+  .registration-course-group {
+    position: relative;
+  }
+
+  .registration-field > .registration-error:not(.sr-only),
+  .registration-course-group > .registration-error:not(.sr-only) {
+    position: absolute;
+    inset-block-start: calc(100% + 2px);
+    inset-inline-start: 0;
+    max-width: 100%;
+    margin: 0;
+    font-size: clamp(0.38rem, 0.56vw, 0.46rem);
+    line-height: 1;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  .registration-error--consent,
+  .registration-message {
+    font-size: clamp(0.38rem, 0.56vw, 0.46rem);
+    line-height: 1;
+  }
+
+  .registration-error--consent {
+    margin-top: -2px;
   }
 }
 
@@ -1123,9 +1289,10 @@
   }
 
   .summer-cards {
-    width: min(326px, 100%);
+    --summer-card-gap: 16px;
+    width: min(430px, 100%);
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: var(--summer-card-gap);
   }
 
   .summer-card__content h3 {
@@ -1170,8 +1337,21 @@
   }
 
   .match-card-grid {
+    --match-card-max: 195px;
+    --match-grid-gap: 12px;
+    width: min(100%, calc(var(--match-card-max) + var(--match-card-max) + var(--match-grid-gap)));
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
+    gap: 14px var(--match-grid-gap);
+    margin-top: 10px;
+  }
+
+  .match-card {
+    width: 100%;
+    row-gap: 4px;
+  }
+
+  .match-card__talk {
+    inline-size: min(96%, 184px);
   }
 
   .match-card__label {
@@ -1251,7 +1431,7 @@
   }
 
   .daily-growth-card {
-    aspect-ratio: 277 / 315;
+    aspect-ratio: 555 / 687;
     overflow: hidden;
     border-radius: 14px;
   }
@@ -1266,7 +1446,7 @@
 
   .daily-growth-card__content {
     inset-inline: 9%;
-    inset-block-start: 70.2%;
+    inset-block-start: 74.2%;
     inset-block-end: 3.2%;
     align-content: start;
     gap: 8px;
@@ -1390,7 +1570,7 @@
       "phone"
       "email"
       "socials";
-    gap: 10px;
+    gap: 8px;
     justify-items: stretch;
     width: 100%;
   }
@@ -1428,11 +1608,16 @@
 
 @media (min-width: 436px) and (max-width: 676px) {
   .summer-card__content {
-    inset-block: 12% 4%;
+    grid-template-rows: auto auto auto;
+    inset-block: 8.5% 4.5%;
+    align-content: space-between;
+    gap: 4px;
   }
 
   .consult-button {
-    width: min(100%, 126px);
+    width: min(100%, clamp(132px, 42vw, 160px));
+    align-self: end;
+    margin-top: 0;
   }
 }
 
@@ -1503,7 +1688,8 @@
     inset-block: 9.5% 7%;
     inset-inline-start: 43%;
     inset-inline-end: 5%;
-    gap: 3px;
+    align-content: center;
+    gap: 4px;
   }
 
   .summer-card__content h3 {
@@ -1527,7 +1713,7 @@
   }
 
   .consult-button {
-    width: min(100%, clamp(104px, 36vw, 134px));
+    width: min(100%, clamp(112px, 36vw, 138px));
     min-height: 0;
     padding: 0;
   }
@@ -1537,7 +1723,20 @@
   }
 
   .match-card-grid {
-    gap: 10px;
+    --match-card-max: 165px;
+    --match-grid-gap: 10px;
+    width: min(100%, calc(var(--match-card-max) + var(--match-card-max) + var(--match-grid-gap)));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px var(--match-grid-gap);
+  }
+
+  .match-card {
+    width: 100%;
+    row-gap: 5px;
+  }
+
+  .match-card__talk {
+    inline-size: min(100%, 156px);
   }
 
   .match-card__label {
@@ -1579,11 +1778,11 @@
   }
 
   .daily-growth-card {
-    aspect-ratio: 277 / 315;
+    aspect-ratio: 555 / 687;
   }
 
   .daily-growth-card__content {
-    inset-block-start: 70.6%;
+    inset-block-start: 74.6%;
     inset-block-end: 3.2%;
     align-content: start;
     gap: 8px;
@@ -1638,15 +1837,12 @@
   }
 }
 
-@media (max-width: 340px) {
-  .summer-card {
-    aspect-ratio: 370 / 242;
-  }
-
+@media (max-width: 426px) {
   .summer-card__content {
     grid-template-rows: auto auto auto;
-    align-content: start;
-    inset-block: 8.5% 6%;
+    align-content: space-between;
+    inset-block: 8.5% 4.5%;
+    gap: 4px;
   }
 
   .summer-card__content ul {
@@ -1654,8 +1850,35 @@
   }
 
   .consult-button {
-    width: min(100%, 104px);
-    align-self: auto;
-    margin-top: 2px;
+    width: min(100%, clamp(132px, 42vw, 160px));
+    align-self: end;
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 340px) {
+  .daily-growth-card__content {
+    inset-block-start: 68.6%;
+  }
+
+  .summer-card {
+    aspect-ratio: 370 / 242;
+  }
+
+  .summer-card__content {
+    grid-template-rows: auto auto auto;
+    align-content: space-between;
+    inset-block: 8.5% 4.8%;
+    gap: 3px;
+  }
+
+  .summer-card__content ul {
+    gap: 3px;
+  }
+
+  .consult-button {
+    width: min(100%, 116px);
+    align-self: end;
+    margin-top: 0;
   }
 }

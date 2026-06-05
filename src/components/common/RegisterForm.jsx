@@ -1,10 +1,10 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import registerButton from '../../assets/Apex - Export/02 Form/CTA dk ngay.png'
 
 const SUBMIT_ENDPOINT =
   'https://script.google.com/macros/s/AKfycbxuO4CZ7HjMlD0mvIMdcn9BUmZkH6-uK3JhmG6yCmniBIS5QLXF4Yx2Mn3AipjlT1wTvw/exec'
 
-const COURSE_OPTIONS = ['Ôn luyện Homeschooling', 'Chính thức Homeschooling']
+const COURSE_OPTIONS = ['Ôn luyện Homeschooling', 'Chính thức Homeschooling', 'Lớp trải nghiệm miễn phí']
 const PHONE_PATTERN = /^0(3|5|7|8|9)\d{8}$/
 const RETRY_DELAY_MS = 2000
 const MAX_NETWORK_RETRIES = 2
@@ -34,6 +34,7 @@ const initialValues = {
 
 export default function RegisterForm() {
   const userIdRef = useRef(null)
+  const courseGroupRef = useRef(null)
   if (userIdRef.current === null) {
     userIdRef.current = createUserId()
   }
@@ -43,6 +44,22 @@ export default function RegisterForm() {
   const [formMessage, setFormMessage] = useState('')
   const [showSuccessPopup, setShowSuccessPopup] = useState(false)
   const [isCourseMenuOpen, setIsCourseMenuOpen] = useState(false)
+
+  useEffect(() => {
+    if (!isCourseMenuOpen) return undefined
+
+    const handlePointerDown = (event) => {
+      if (courseGroupRef.current?.contains(event.target)) return
+
+      setIsCourseMenuOpen(false)
+    }
+
+    document.addEventListener('pointerdown', handlePointerDown)
+
+    return () => {
+      document.removeEventListener('pointerdown', handlePointerDown)
+    }
+  }, [isCourseMenuOpen])
 
   const closeSuccessPopup = () => {
     setShowSuccessPopup(false)
@@ -164,6 +181,8 @@ export default function RegisterForm() {
 
     if (isSubmitting) return
 
+    setFormMessage('')
+
     const nextErrors = validateForm()
     setErrors(nextErrors)
 
@@ -181,7 +200,6 @@ export default function RegisterForm() {
     }
 
     setIsSubmitting(true)
-    setFormMessage('')
 
     try {
       const response = await postWithRetry(payload)
@@ -217,25 +235,32 @@ export default function RegisterForm() {
     }
   }
 
-  const isSubmitDisabled = isSubmitting || !values.allowContact
+  const isSubmitDisabled = isSubmitting
   const selectedCourseLabel = values.courses.length > 0 ? values.courses.join(', ') : 'Chọn khóa học'
+  const courseSelectLabel = errors.courses && values.courses.length === 0 ? errors.courses : selectedCourseLabel
 
   return (
     <>
       <form className="registration-form" onSubmit={handleSubmit} noValidate>
-        <label className="registration-field registration-field--full">
+        <label className={`registration-field registration-field--full${errors.parentName ? ' is-invalid' : ''}`}>
           <span>Họ Tên Ba / Mẹ</span>
           <input
             name="parentName"
             value={values.parentName}
             onChange={(event) => updateField('parentName', event.target.value)}
             autoComplete="name"
+            placeholder={errors.parentName || ''}
             aria-invalid={errors.parentName ? 'true' : undefined}
+            aria-describedby={errors.parentName ? 'registration-parent-name-error' : undefined}
           />
-          {errors.parentName && <small className="registration-error">{errors.parentName}</small>}
+          {errors.parentName && (
+            <small className="registration-error sr-only" id="registration-parent-name-error">
+              {errors.parentName}
+            </small>
+          )}
         </label>
 
-        <label className="registration-field">
+        <label className={`registration-field${errors.phone ? ' is-invalid' : ''}`}>
           <span>Số ĐT</span>
           <input
             name="phone"
@@ -244,12 +269,18 @@ export default function RegisterForm() {
             type="tel"
             inputMode="tel"
             autoComplete="tel"
+            placeholder={errors.phone || ''}
             aria-invalid={errors.phone ? 'true' : undefined}
+            aria-describedby={errors.phone ? 'registration-phone-error' : undefined}
           />
-          {errors.phone && <small className="registration-error">{errors.phone}</small>}
+          {errors.phone && (
+            <small className="registration-error sr-only" id="registration-phone-error">
+              {errors.phone}
+            </small>
+          )}
         </label>
 
-        <label className="registration-field">
+        <label className={`registration-field${errors.childBirthYear ? ' is-invalid' : ''}`}>
           <span>Năm sinh bé</span>
           <input
             name="childBirthYear"
@@ -259,12 +290,21 @@ export default function RegisterForm() {
             min="2015"
             max="2024"
             inputMode="numeric"
+            placeholder={errors.childBirthYear || ''}
             aria-invalid={errors.childBirthYear ? 'true' : undefined}
+            aria-describedby={errors.childBirthYear ? 'registration-birth-year-error' : undefined}
           />
-          {errors.childBirthYear && <small className="registration-error">{errors.childBirthYear}</small>}
+          {errors.childBirthYear && (
+            <small className="registration-error sr-only" id="registration-birth-year-error">
+              {errors.childBirthYear}
+            </small>
+          )}
         </label>
 
-        <fieldset className="registration-field registration-field--full registration-course-group">
+        <fieldset
+          className={`registration-field registration-field--full registration-course-group${errors.courses ? ' is-invalid' : ''}`}
+          ref={courseGroupRef}
+        >
           <legend>Khóa học ba mẹ quan tâm</legend>
           <button
             className="registration-course-select"
@@ -272,8 +312,10 @@ export default function RegisterForm() {
             onClick={() => setIsCourseMenuOpen((current) => !current)}
             aria-expanded={isCourseMenuOpen}
             aria-haspopup="listbox"
+            aria-invalid={errors.courses ? 'true' : undefined}
+            aria-describedby={errors.courses ? 'registration-course-error' : undefined}
           >
-            <span>{selectedCourseLabel}</span>
+            <span>{courseSelectLabel}</span>
           </button>
           <div className={`registration-course-list${isCourseMenuOpen ? ' is-open' : ''}`} role="listbox">
             {COURSE_OPTIONS.map((course) => (
@@ -289,15 +331,20 @@ export default function RegisterForm() {
               </button>
             ))}
           </div>
-          {errors.courses && <small className="registration-error">{errors.courses}</small>}
+          {errors.courses && (
+            <small className="registration-error sr-only" id="registration-course-error">
+              {errors.courses}
+            </small>
+          )}
         </fieldset>
 
-        <label className="registration-consent">
+        <label className={`registration-consent${errors.allowContact ? ' is-invalid' : ''}`}>
           <input
             type="checkbox"
             name="allowContact"
             checked={values.allowContact}
             onChange={(event) => updateField('allowContact', event.target.checked)}
+            aria-invalid={errors.allowContact ? 'true' : undefined}
           />
           <span>
             Bằng việc đăng ký thông tin, ba mẹ đồng ý cho phép ApexEdu liên hệ thông qua cuộc gọi,
@@ -310,11 +357,6 @@ export default function RegisterForm() {
         {formMessage && <p className="registration-message" role="alert">{formMessage}</p>}
 
         <div className="registration-submit-wrap">
-          {!values.allowContact && (
-            <span className="registration-submit-tooltip" role="status">
-              Vui lòng đồng ý để chúng tôi có thể liên hệ tư vấn cho bạn
-            </span>
-          )}
           <button
             className="registration-submit"
             type="submit"

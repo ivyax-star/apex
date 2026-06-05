@@ -146,12 +146,12 @@ const platformSlideInterval = 3800
 const summerOptions = [
   {
     src: summerCardOne,
-    title: 'Khóa ôn luyện Homeschooling bé 5-7 tuổi',
+    title: 'Khóa ôn luyện (2\u00a0Khóa\u00a0Học) Homeschooling bé\u00a05\u20117\u00a0tuổi',
     bullets: ['Khóa học thứ 7 & Chủ Nhật ', 'Khóa học từ thứ 2 – thứ 6 chỉ trong Tháng 6 & 7', 'Từ 7h30-16h30'],
   },
   {
     src: summerCardTwo,
-    title: 'Khóa Chính thức Homeschooling Bé 6-8 tuổi',
+    title: 'Khóa Chính thức Homeschooling Bé\u00a06\u20118\u00a0tuổi',
     bullets: ['Học thứ 7 & Chủ Nhật', 'Từ 7h30 - 16h30', 'Từ tháng 8 đến tháng 5 năm sau', 'Có bảng điểm/chứng nhận từ Ivy Global School'],
   },
 ]
@@ -210,6 +210,8 @@ const dailyGrowthCards = [
   },
   {
     src: dailyGrowthImageThree,
+    titleLines: ['Con lớn hơn trong cách dùng', 'tiếng Anh'],
+    descriptionLines: ['Sử dụng tiếng Anh tự nhiên để', 'học tập, giao tiếp, tương tác', 'hằng ngày.'],
     title: 'Con lớn hơn trong cách dùng tiếng Anh',
     description: 'Sử dụng tiếng Anh tự nhiên để học tập, giao tiếp, tương tác hàng ngày.',
     alt: 'Con lon hon trong cach dung tieng Anh: dung tieng Anh de hoc, hoi, tuong tac va tu tin the hien',
@@ -326,16 +328,21 @@ export default function Hero() {
         <div className="growth-panel">
           <div className="section-heading section-heading--growth">
             <h2 id="growth-title">
-              <span>Homeschooling ApexEdu</span>
-              giúp con lớn hơn như thế nào?
+              <span>Homeschooling</span>
+              <span>ApexEdu</span>
+              <span className="growth-title__line">giúp con lớn hơn</span>
+              <span className="growth-title__line">như thế nào?</span>
             </h2>
             <p className="program-description">
               <span className="program-line">Chương trình</span>
               <span className="program-line"><strong>Homeschooling 100% Tiếng Anh</strong></span>
               <span className="program-line">theo giáo trình chuẩn Mỹ,</span>
               <span className="program-line">kết nối toàn diện:</span>
-              <span className="program-line"><strong>Toán / Khoa học / Ngữ văn / Kỹ năng sống</strong></span>
-              <span className="program-line">- giúp con lớn hơn trong cách học chủ động, nghĩ độc lập và tự tin thể hiện bản thân.</span>
+              <span className="program-line"><strong>Toán / Khoa học / Ngữ văn /</strong></span>
+              <span className="program-line"><strong>Kỹ năng sống</strong></span>
+              <span className="program-line">giúp con lớn hơn trong cách học</span>
+              <span className="program-line">chủ động, nghĩ độc lập và tự tin</span>
+              <span className="program-line">thể hiện bản thân.</span>
             </p>
           </div>
 
@@ -468,8 +475,16 @@ export default function Hero() {
             <article className="daily-growth-card" key={card.src}>
               <img src={card.src} alt={card.alt} {...lazyImageProps} />
               <div className="daily-growth-card__content">
-                <h3>{card.title}</h3>
-                <p>{card.description}</p>
+                <h3>
+                  {card.titleLines
+                    ? card.titleLines.map((line) => <span key={line}>{line}</span>)
+                    : card.title}
+                </h3>
+                <p>
+                  {card.descriptionLines
+                    ? card.descriptionLines.map((line) => <span key={line}>{line}</span>)
+                    : card.description}
+                </p>
               </div>
             </article>
           ))}
