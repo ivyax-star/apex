@@ -2,12 +2,12 @@ import { useEffect, useRef, useState } from 'react'
 import registerButton from '../../assets/Apex - Export/02 Form/CTA dk ngay.png'
 
 const SUBMIT_ENDPOINT =
-  'https://script.google.com/macros/s/AKfycbxuO4CZ7HjMlD0mvIMdcn9BUmZkH6-uK3JhmG6yCmniBIS5QLXF4Yx2Mn3AipjlT1wTvw/exec'
+  'https://script.google.com/macros/s/AKfycbyjmWXp-4GnhThNEAY03p7loj2PFCo6vLz0dAzviZaYkU-Y1vPDyQw8IqSlbSGvOAz5Kw/exec'
 
 const COURSE_OPTIONS = ['Ôn luyện Homeschooling', 'Chính thức Homeschooling', 'Lớp trải nghiệm miễn phí']
 const PHONE_PATTERN = /^0(3|5|7|8|9)\d{8}$/
 const RETRY_DELAY_MS = 2000
-const MAX_NETWORK_RETRIES = 2
+const MAX_NETWORK_RETRIES = 2 
 
 const createUserId = () => {
   if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {

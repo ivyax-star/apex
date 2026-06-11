@@ -1,6 +1,7 @@
 import homeIcon from '../../assets/Apex - Export/Icon + Button/icon home.png'
 import emailIcon from '../../assets/Apex - Export/Icon + Button/icon email.png'
 import phoneIcon from '../../assets/Apex - Export/Icon + Button/icon dt.png'
+import privacyIcon from '../../assets/Apex - Export/Icon + Button/privacy-policy-icon.svg'
 import facebookIcon from '../../assets/Apex - Export/icon social/icon fb.png'
 import zaloIcon from '../../assets/Apex - Export/icon social/icon zalo.png'
 import messengerIcon from '../../assets/Apex - Export/icon social/icon mes.png'
@@ -11,6 +12,7 @@ const addressMapLink =
   'https://www.bing.com/maps/search?v=2&pc=FACEBK&mid=8100&mkt=en-US&fbclid=IwY2xjawSPkTNleHRuA2FlbQIxMABicmlkETFJTFdpRGdTNEE4WkR0bWxsc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHhbqEEDZHK9fXVWny4AKu6e2NJAF1XTMG4zenFAKnF81im27c2xnVNXt2Bn2_aem_SeR0r7Fm0Sc9reWX2AnR4A&FORM=FBKPL1&q=+To%C3%A0+nh%C3%A0+ApexGroup%2C+979+%C4%91%C6%B0%E1%BB%9Dng+DT+743A%2C+Khu+ph%E1%BB%91+T%C3%A2n+Long%2C+Ph%C6%B0%E1%BB%9Dng+D%C4%A9+An%2C+Di+An%2C+Vietnam%2C+Ho+Chi+Minh+City%2C+Vietnam&cp=10.914157%7E106.750448&lvl=16.3&style=r'
 const phoneLink = 'tel:0377565059'
 const emailLink = 'mailto:apexedu2025@gmail.com'
+const privacyPolicyLink = '/chinh-sach-bao-mat'
 
 const socialLinks = [
   {
@@ -43,6 +45,17 @@ const footerImageProps = {
 }
 
 export default function Footer() {
+  const handlePrivacyNavigation = (event) => {
+    if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.altKey || event.ctrlKey || event.shiftKey) {
+      return
+    }
+
+    event.preventDefault()
+    window.history.pushState({}, '', privacyPolicyLink)
+    window.dispatchEvent(new Event('apex:navigate'))
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+  }
+
   return (
     <footer
       className="landing-bg landing-bg--footer landing-footer"
@@ -86,6 +99,11 @@ export default function Footer() {
           >
             <img src={emailIcon} alt="" aria-hidden="true" {...footerImageProps} />
             <span>apexedu2025@gmail.com</span>
+          </a>
+
+          <a className="landing-footer__privacy" href={privacyPolicyLink} onClick={handlePrivacyNavigation}>
+            <img src={privacyIcon} alt="" aria-hidden="true" {...footerImageProps} />
+            <span>Chính sách bảo mật</span>
           </a>
 
           <div className="landing-footer__socials" aria-label="Mạng xã hội ApexEdu">

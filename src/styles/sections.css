@@ -1441,11 +1441,11 @@
 
 .landing-footer__contacts {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) max-content;
+  grid-template-columns: minmax(0, 1fr) minmax(150px, max-content) max-content;
   grid-template-areas:
-    "address phone"
-    "email socials";
-  gap: clamp(10px, 1.1vw, 15px) clamp(32px, 3vw, 44px);
+    "address address phone"
+    "email privacy socials";
+  gap: clamp(10px, 1.1vw, 15px) clamp(22px, 2.4vw, 34px);
   align-items: center;
   justify-items: start;
 }
@@ -1527,6 +1527,49 @@
   text-transform: lowercase;
 }
 
+.landing-footer__privacy {
+  grid-area: privacy;
+  z-index: 2;
+  display: inline-flex;
+  min-width: max-content;
+  min-height: var(--footer-icon-size);
+  align-self: center;
+  align-items: center;
+  gap: var(--footer-contact-gap);
+  justify-self: start;
+  color: #173b4f;
+  cursor: pointer;
+  font-size: var(--footer-text-size);
+  font-weight: 900;
+  line-height: 1;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.landing-footer__privacy img {
+  display: block;
+  width: var(--footer-icon-size);
+  height: var(--footer-icon-size);
+  flex: 0 0 auto;
+  transform: translate(var(--footer-icon-shift-x), var(--footer-icon-shift-y)) scale(var(--footer-icon-scale));
+  transform-origin: center;
+}
+
+.landing-footer__privacy span {
+  display: inline-flex;
+  align-items: center;
+  min-width: max-content;
+  line-height: 1;
+  transform: translateY(-0.12em);
+}
+
+.landing-footer__privacy:focus-visible {
+  border-radius: 10px;
+  outline: 2px solid #ffffff;
+  outline-offset: 4px;
+}
+
 .landing-footer__socials {
   display: flex;
   grid-area: socials;
@@ -1564,4 +1607,118 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+
+.policy-page {
+  min-height: 100vh;
+  background: #ffffff;
+  color: #00584d;
+  font-family:
+    "Montserrat", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.policy-breadcrumb {
+  background: #ffffff;
+  padding: clamp(24px, 4vw, 48px) clamp(16px, 4vw, 56px) 0;
+}
+
+.policy-breadcrumb__inner {
+  display: grid;
+  width: min(100%, 1124px);
+  margin-inline: auto;
+}
+
+.policy-breadcrumb__nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #646464;
+  font-size: clamp(1.14rem, 1.55vw, 1.48rem);
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.policy-breadcrumb__nav a {
+  color: #646464;
+}
+
+.policy-breadcrumb__nav span {
+  color: #051678;
+}
+
+.policy-main {
+  padding: clamp(46px, 5.5vw, 72px) clamp(20px, 4vw, 56px) clamp(70px, 8vw, 110px);
+}
+
+.policy-article {
+  width: min(100%, 1124px);
+  margin-inline: auto;
+}
+
+.policy-title {
+  max-width: 1010px;
+  margin: 0 0 clamp(22px, 3vw, 34px);
+  color: #000000;
+  font-size: clamp(2.5rem, 3.3vw, 3.7rem);
+  font-weight: 900;
+  line-height: 1.12;
+  text-transform: uppercase;
+}
+
+.policy-intro,
+.policy-section p,
+.policy-section li {
+  max-width: 1150px;
+  color: #646464;
+  font-size: clamp(1.08rem, 1.52vw, 1.48rem);
+  font-weight: 400;
+  line-height: 1.52;
+}
+
+.policy-section {
+  margin-top: clamp(30px, 4vw, 50px);
+}
+
+.policy-section h2 {
+  margin: 0 0 clamp(18px, 2vw, 26px);
+  color: #000000;
+  font-size: clamp(1.46rem, 2.15vw, 2.1rem);
+  font-weight: 900;
+  line-height: 1.18;
+}
+
+.policy-section p + p,
+.policy-section p + ul,
+.policy-section ul + p {
+  margin-top: clamp(18px, 2.2vw, 28px);
+}
+
+.policy-section ul {
+  display: grid;
+  gap: clamp(6px, 0.9vw, 12px);
+  list-style: disc;
+  margin: 0;
+  padding-inline-start: clamp(24px, 2.2vw, 34px);
+}
+
+.policy-section li::marker {
+  color: #000000;
+  font-size: 0.82em;
+}
+
+.policy-section strong {
+  color: #000000;
+  font-weight: 900;
+}
+
+.policy-section a,
+.policy-intro a {
+  color: #1155cc;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.policy-page .landing-footer {
+  margin-top: 0;
 }

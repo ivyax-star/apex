@@ -1,6 +1,8 @@
 const SHEET_NAME = "Leads";
 const TIMEZONE = "Asia/Ho_Chi_Minh";
 const SPREADSHEET_ID = "";
+const PHONE_COLUMN = 4;
+const NOTIFICATION_RECIPIENTS = "phuoc.dt@agorax.vn";
 
 function doPost(e) {
   const lock = LockService.getScriptLock();
@@ -20,10 +22,10 @@ function doPost(e) {
 
     // Bắt buộc phải tích cho phép liên hệ
     if (data.allowContact !== true) {
-      return jsonResponse({ 
-        success: false, 
+      return jsonResponse({
+        success: false,
         error: "CONTACT_NOT_ALLOWED",
-        message: "Vui lòng đồng ý để ApexEdu liên hệ tư vấn" 
+        message: "Vui lòng đồng ý để ApexEdu liên hệ tư vấn"
       });
     }
 
@@ -32,23 +34,43 @@ function doPost(e) {
       return jsonResponse({ success: false, error: "Số điện thoại không hợp lệ" });
     }
 
+    const userId = data.userId || Utilities.getUuid();
     const timestamp = Utilities.formatDate(new Date(), TIMEZONE, "yyyy-MM-dd HH:mm:ss");
+    const parentName = data.parentName.trim();
+    const childBirthYear = data.childBirthYear || "";
+    const courseText = Array.isArray(data.courses)
+      ? data.courses.join(", ")
+      : (data.courses || "");
 
     const row = [
-      data.userId || Utilities.getUuid(),        // A - User ID
-      timestamp,                                  // B - Timestamp
-      data.parentName.trim(),                     // C - Họ tên Ba/Mẹ
-      phone,                                      // D - Số điện thoại
-      data.childBirthYear || "",                  // E - Năm sinh bé
-      Array.isArray(data.courses)                 // F - Khóa quan tâm
-        ? data.courses.join(", ") 
-        : (data.courses || ""),
-      "TRUE"                                      // G - Cho phép liên hệ
+      userId,          // A - User ID
+      timestamp,       // B - Timestamp
+      parentName,      // C - Họ tên Ba/Mẹ
+      "",              // D - Số điện thoại, ghi riêng dạng text để không mất số 0
+      childBirthYear,  // E - Năm sinh bé
+      courseText,      // F - Khóa quan tâm
+      "TRUE"           // G - Cho phép liên hệ
     ];
 
     sheet.appendRow(row);
+    const rowNumber = sheet.getLastRow();
+    setPhoneCellText_(sheet, rowNumber, phone);
+    SpreadsheetApp.flush();
 
-    return jsonResponse({ success: true, userId: row[0] });
+    lock.releaseLock();
+    hasLock = false;
+
+    sendLeadNotification_({
+      userId,
+      timestamp,
+      parentName,
+      phone,
+      childBirthYear,
+      courseText,
+      rowNumber
+    });
+
+    return jsonResponse({ success: true, userId });
 
   } catch (err) {
     return jsonResponse({ success: false, error: err.message });
@@ -73,19 +95,42 @@ function getSheet_() {
 
   const sheet = spreadsheet.getSheetByName(SHEET_NAME) || spreadsheet.insertSheet(SHEET_NAME);
 
-  if (sheet.getLastRow() === 0) {
-    sheet.appendRow([
-      "userId",
-      "Timestamp",
-      "Họ tên Ba/Mẹ",
-      "Số điện thoại",
-      "Năm sinh bé",
-      "Khóa quan tâm",
-      "Cho phép liên hệ"
-    ]);
-  }
+  ensureHeaders_(sheet);
 
   return sheet;
+}
+
+function ensureHeaders_(sheet) {
+  const headers = [
+    "userId",
+    "Timestamp",
+    "Họ tên Ba/Mẹ",
+    "Số điện thoại",
+    "Năm sinh bé",
+    "Khóa quan tâm",
+    "Cho phép liên hệ"
+  ];
+
+  if (sheet.getLastRow() === 0) {
+    sheet.appendRow(headers);
+    return;
+  }
+
+  const headerRange = sheet.getRange(1, 1, 1, headers.length);
+  const currentHeaders = headerRange.getValues()[0];
+
+  headers.forEach(function(header, index) {
+    if (!currentHeaders[index]) {
+      sheet.getRange(1, index + 1).setValue(header);
+    }
+  });
+}
+
+function setPhoneCellText_(sheet, rowNumber, phone) {
+  sheet
+    .getRange(rowNumber, PHONE_COLUMN)
+    .setNumberFormat("@")
+    .setValue(phone);
 }
 
 function parsePayload_(e) {
@@ -109,6 +154,50 @@ function normalizePhone(raw) {
   return /^0(3|5|7|8|9)\d{8}$/.test(p) ? p : null;
 }
 
+function sendLeadNotification_(lead) {
+  if (!NOTIFICATION_RECIPIENTS) {
+    return {
+      sent: false,
+      error: "Chưa cấu hình NOTIFICATION_RECIPIENTS"
+    };
+  }
+
+  try {
+    MailApp.sendEmail({
+      to: NOTIFICATION_RECIPIENTS,
+      subject: "[ApexEdu] Có phụ huynh đăng ký mới - " + lead.parentName,
+      body: buildLeadEmailBody_(lead),
+      name: "ApexEdu Website"
+    });
+
+    return {
+      sent: true,
+      error: ""
+    };
+  } catch (err) {
+    Logger.log("Không gửi được email thông báo: " + err.message);
+    return {
+      sent: false,
+      error: err.message
+    };
+  }
+}
+
+function buildLeadEmailBody_(lead) {
+  return [
+    "Website vừa có phụ huynh đăng ký tư vấn.",
+    "",
+    "Họ tên Ba/Mẹ: " + lead.parentName,
+    "Số điện thoại: " + lead.phone,
+    "Năm sinh bé: " + (lead.childBirthYear || "Chưa cung cấp"),
+    "Khóa quan tâm: " + (lead.courseText || "Chưa cung cấp"),
+    "Thời gian đăng ký: " + lead.timestamp,
+    "Dòng trong Sheet: " + lead.rowNumber,
+    "",
+    "Vui lòng liên hệ phụ huynh sớm để hỗ trợ."
+  ].join("\n");
+}
+
 function jsonResponse(obj) {
   return ContentService
     .createTextOutput(JSON.stringify(obj))
@@ -127,7 +216,7 @@ function testPost_allowed() {
     allowContact: true
   };
   const result = doPost({ postData: { contents: JSON.stringify(fakeData) } });
-  Logger.log("✅ Kết quả:", result.getContent());
+  Logger.log("Kết quả: " + result.getContent());
 }
 
 function testPost_blocked() {
@@ -140,5 +229,48 @@ function testPost_blocked() {
     allowContact: false
   };
   const result = doPost({ postData: { contents: JSON.stringify(fakeData) } });
-  Logger.log("🚫 Kết quả:", result.getContent());
+  Logger.log("Kết quả: " + result.getContent());
+}
+
+function testSendLeadNotification() {
+  const result = sendLeadNotification_({
+    userId: "test-email",
+    parentName: "Test ApexEdu",
+    phone: "0373445349",
+    childBirthYear: "2019",
+    courseText: "Lớp trải nghiệm miễn phí",
+    timestamp: Utilities.formatDate(new Date(), TIMEZONE, "yyyy-MM-dd HH:mm:ss"),
+    rowNumber: "test"
+  });
+
+  Logger.log("Kết quả gửi email: " + JSON.stringify(result));
+}
+
+function authorizeMailPermission() {
+  ScriptApp.requireScopes(ScriptApp.AuthMode.FULL, [
+    "https://www.googleapis.com/auth/script.send_mail",
+    "https://www.googleapis.com/auth/spreadsheets"
+  ]);
+
+  MailApp.sendEmail({
+    to: NOTIFICATION_RECIPIENTS,
+    subject: "[ApexEdu] Test cấp quyền gửi email",
+    body: "Nếu nhận được email này thì Apps Script đã có quyền gửi email thông báo đăng ký."
+  });
+
+  Logger.log("Đã gửi email test cấp quyền đến: " + NOTIFICATION_RECIPIENTS);
+}
+
+function removeEmailDebugColumns() {
+  const sheet = getSheet_();
+  const emailStatusHeader = sheet.getRange(1, 8).getValue();
+  const emailErrorHeader = sheet.getRange(1, 9).getValue();
+
+  if (emailStatusHeader === "Email thông báo" && emailErrorHeader === "Lỗi gửi email") {
+    sheet.deleteColumns(8, 2);
+    Logger.log("Đã xóa cột H và I.");
+    return;
+  }
+
+  Logger.log("Không xóa cột vì header H/I không khớp cột debug email.");
 }

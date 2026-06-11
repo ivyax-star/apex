@@ -736,7 +736,7 @@
     --footer-content-top: 118px;
     --footer-icon-size: 50px;
     --footer-icon-scale: 1;
-    --footer-lift: 12px;
+    --footer-lift: 23px;
     --footer-social-size: 26px;
     --footer-contact-gap: 9px;
     --footer-text-size: clamp(0.68rem, 1.1vw, 0.76rem);
@@ -755,6 +755,10 @@
 
   .landing-footer__contacts {
     grid-template-columns: minmax(270px, 1fr) max-content;
+    grid-template-areas:
+      "address phone"
+      "email socials"
+      "privacy socials";
     gap: 9px 18px;
   }
 
@@ -763,6 +767,12 @@
   }
 
   .landing-footer__contact--phone {
+    font-size: var(--footer-text-size);
+  }
+
+  .landing-footer__privacy {
+    grid-area: privacy;
+    justify-self: start;
     font-size: var(--footer-text-size);
   }
 
@@ -1536,12 +1546,12 @@
   }
 
   .landing-footer {
-    --footer-bg-height: clamp(340px, 76vw, 410px);
+    --footer-bg-height: clamp(390px, 86vw, 460px);
     --footer-bg-offset: 0px;
-    --footer-content-top: clamp(104px, 23vw, 128px);
+    --footer-content-top: clamp(136px, 31vw, 158px);
     --footer-icon-size: 50px;
     --footer-icon-scale: 1;
-    --footer-lift: 10px;
+    --footer-lift: 14px;
     --footer-social-size: 26px;
     --footer-contact-gap: 9px;
     --footer-text-size: clamp(0.68rem, 2.6vw, 0.76rem);
@@ -1569,6 +1579,7 @@
       "address"
       "phone"
       "email"
+      "privacy"
       "socials";
     gap: 8px;
     justify-items: stretch;
@@ -1598,6 +1609,12 @@
     font-size: var(--footer-text-size);
     line-height: 1;
     white-space: nowrap;
+  }
+
+  .landing-footer__privacy {
+    width: 100%;
+    justify-self: stretch;
+    text-align: left;
   }
 
   .landing-footer__socials {
@@ -1880,5 +1897,55 @@
     width: min(100%, 116px);
     align-self: end;
     margin-top: 0;
+  }
+}
+
+@media (max-width: 720px) {
+  .policy-breadcrumb {
+    padding: 24px 20px 0;
+  }
+
+  .policy-breadcrumb__nav {
+    flex-wrap: wrap;
+    font-size: 1.04rem;
+  }
+
+  .policy-main {
+    padding: 36px 20px 58px;
+  }
+
+  .policy-title {
+    font-size: clamp(2rem, 9.5vw, 3rem);
+    line-height: 1.14;
+  }
+
+  .policy-intro,
+  .policy-section p,
+  .policy-section li {
+    font-size: 1rem;
+    line-height: 1.58;
+  }
+
+  .policy-section {
+    margin-top: 32px;
+  }
+
+  .policy-section h2 {
+    font-size: clamp(1.28rem, 6vw, 1.72rem);
+    line-height: 1.2;
+  }
+}
+
+@media (max-width: 420px) {
+  .policy-main {
+    padding: 30px 16px 50px;
+  }
+
+  .policy-breadcrumb {
+    padding-inline: 16px;
+  }
+
+  .policy-title {
+    font-size: clamp(1.72rem, 10vw, 2.3rem);
   }
 }
